@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns='http://www.w3.org/1999/xhtml' xml:lang='fr' lang='fr'>
+  <head>
+    <meta http-equiv='Content-Type' content='text/html; charset=utf-8'/>
+    <meta name='author' content='Yann SECQ (yann.secq@univ-lille1.fr)'/>
+    <meta name='author' content='Bruno BEAUFILS (bruno.beaufils@lifl.fr)'/>
+    <style type='text/css'>
+body {text-align:justify; margin:1em 10% 5% 10%;}
+a, a:link, a:visited {text-decoration:none;}
+h1 {text-align:center;}
+h2 {border-bottom:1px dotted black;}
+code {background:lightgrey; padding:.15em .25em;}
+pre {background:lightgrey; margin:.5em 1em; border:1px dotted black; padding:1em; font-size:120%; }
+.highlight {font-size:125%; color:red;}
+.author {font-size:66%;}
+    </style>
+    <title>AP1/AP2 TP0&nbsp;: Survivor's guide</title>
+  </head>
+
+  <body>
+    <h1>TP0&nbsp;: Survivor's Guides<br/><span class='author'><a href='http://www.lifl.fr/~secq'>Yann SECQ</a><br/>(révisé par <a href='http://www.lifl.fr/~beaufils'>Bruno BEAUFILS</a>)</span></h1>
+
+    <p>
+      Lors de ce premier <abbr title='Travaux Pratiques'>TP</abbr>, vous allez étudier attentivement les trois guides du survivant vous permettant si vous les assimiler de vous en sortir lors des premières séances de TP (ensutie cela se compliquera&nbsp;!). Le premier guide vous donnera les armes UNIX de base, le deuxième guide vous fournira votre outil de création, tandis que le dernier guide débutera votre initiation à la programmation avec JAVA !
+    </p>
+    
+    <h2>Chapitre I&nbsp;: UNIX Survivor's Guide</h2>
+
+    <p>
+      Au commencement était le terminal&nbsp;! Le terminal est le suppôt du système d'exploitation&nbsp;: par son intermédiaire, il vous est possible de le questionner et de lui soumettre des requêtes (auquel il répondra prestement). Votre première mission consiste donc à trouver ce terminal en farfouillant dans les antres des menus de votre gestionnaire de fenêtres ou de bureau (<em>window manager</em> ou <em>desktop manager</em>, qui doit être <a href='http://www.gnome.org'>Gnome</a> normalement). Baladez-vous dans les menus, jusqu'à trouver un item nommé <code>Terminal</code>.
+    </p>
+
+    <p>
+      Une fois identifié, sélectionnez cet item et le suppôt apparaîtra sous la forme d'une fenêtre supplémentaire, tout de noir excepté une étrange phrase en haut à gauche. Cette phrase est la phrase d'acceuil, l'<dfn>invite</dfn> (ou <em>prompt</em>) du terminal&nbsp;: il vous identifie et attend vos requêtes. Malheureusement, le suppôt du système (ou <abbr title='Operating&nbsp;System'>OS</abbr>) parle un anglais médiocre. Il vous faudra donc faire preuve de qualité linguistique lorsque vous vous adresserez à lui. Nous allons voir les rudiments de sa langue, ce qu'il vous sera nécessaire de maîtriser pour pouvoir ensuite créer vos premiers algorithmes.
+    </p>
+
+    <h3>Savoir ce qui est disponible là où l'on se trouve&nbsp;: <span class='highlight'>l</span>i<span class='highlight'>s</span>t ou <code>ls</code></h3>
+
+    <p>
+      Lorsque vous ouvrez un terminal, il vous accueille généralement chez vous, c'est-à-dire à la racine de votre compte (<em>i.e.</em> votre petit espace personnel qui contiendra bientôt tous les parchemins et grimoires nécessaires à votre progression dans l'art de l'informatique&nbsp;;-). Commencez donc par taper la commande <code>ls</code> dans le terminal (en minuscule et en validant avec un retour à la ligne). Une liste de mots devrait s'afficher, vous présentant ce que contient votre répertoire (normalement, les répertoires qui ont été crées pour vous par les administrateurs du système du département).
+    </p>
+
+    <h3>Savoir créer un répertoire&nbsp; <span class='highlight'>m</span>a<span class='highlight'>k</span>e <span class='highlight'>dir</span>ectory ou <code>mkdir</code></h3>
+
+    <p>
+      Dans le souci de maintenir votre espace rangé et ordonné vous avez intérêt à créer un espace réservé à chacune des matières qui vont vous être enseignées et dans chaque matière un espace pour chaque séance TP que vous allez faire. Ce genre d'espace est appelé un répertoire (<em>directory</em>), un catalogue ou encore un dossier (<em>folder</em>). Ainsi, pour les matières enseignées au cours de ce premier semestre, vous allez créer les répertoires <code>ap12</code>, <code>asr1</code>, <code>asr3</code> et <code>omgl1</code> (en minuscules) en implorant gentiment le terminal avec la commande&nbsp;: <code>mkdir&nbsp;ap12&nbsp;asr1&nbsp;asr3&nbsp;omgl1</code> (qui se traduit littéralement par <em>make directories ap12 and asr1 and asr3 and omgl1</em>, que je ne vous ferez pas l'affront de traduire :-).
+    </p>
+
+    <p>
+      Pour compléter la préparation du rangement demander au système de créer un répertoire <code>tp0</code> dans le répertoire réservé aux enseignements d'<abbr title='Algoithmique&nbsp;et&nbsp;Programmation'>AP</abbr> via la commande <code>mkdir ap12/tp0</code>.
+    </p>
+
+    <h3>Savoir se déplacer&nbsp;: <span class='highlight'>c</span>hange <span class='highlight'>d</span>irectory ou <code>cd</code></h3>
+
+    <p>
+      Pour ne pas mélanger toutes vos recettes et vos expérimentations, vous allez demander au terminal de vous emmener dans votre répertoire dédié à l'algorithmique (<code>ap12</code>. Pour ce faire, utiliser la commande <code>cd</code> à laquelle vous devez indiquer le répertoire dans lequel vous désirez vous rendre&nbsp;: <code>cd&nbsp;ap12</code> (en se souvenant que <code>ap12</code> est le répertoire que vous avez créé à l'étape précédente). Vous devriez constater suite à l'exécution de cette commande que l'invite du terminal s'est légèrement modifiée pour faire apparaître le répertoire dans lequel vous vous trouvez.
+    </p>
+
+    <p>
+      Un petit coup de <code>ls</code> pour vérifier que le suppôt de l'OS ne nous ait pas joué de vilain tour ... et vous devriez voir apparaître le nom du répertoire qui vous servira à stocker les travaux de cette première séance (à savoir <code>tp0</code>). Vous continuerez à vous enfoncer dans les profondeurs de cette hiérarchie en ordonnant l'exécution de la commande <code>cd&nbsp;tp0</code>.
+    </p>
+
+    <p>
+      Vous pouvez maintenant lister le contenu de ce répertoire pour voir ce qu'il contient ... et pour l'instant, il n'y a pas grand chose !
+    </p>
+
+    <p>
+      Dernière petite chose, même si il est intéressant de pouvoir <em>s'enfoncer</em> dans une arborescence, encore faut-il en <em>remonter</em> parfois&nbsp;:
+	</p>
+	<ul>
+	  <li>
+		si vous désirez revenir dans le répertoire précédent (c'est-à-dire dans <code>ap12</code> lorsque vous êtes dans <code>tp0</code>, il vous suffit d'utiliser la commande&nbsp;: <code>cd&nbsp;..</code> (le <code>..</code> veut dire répertoire supérieur&nbsp;!)&nbsp;;
+	  </li>
+	  <li>
+		à tout endroit et à tout moment, si vous désirez revenir à la base de votre espace de données (sa <em>racine</em>) il vous suffit d'exécuter la commande <code>cd</code> seule.
+	  </li>
+	</ul>
+
+    <p>
+      Maintenant que vous êtes placé dans le répertoire de notre séance, nous allons pouvoir passer au deuxième guide fondamental&nbsp;: celui vous permettant de créer des textes.
+    </p>
+
+    <h2>Chapitre II&nbsp;: Emacs Survivor's Guide</h2>
+
+    <p>
+      Avant de pouvoir écrire vos programmes, encore faut-il disposer d'un papier et d'un crayon&nbsp;! Traduit dans le contexte informatique, il vous faut un outil que l'on nomme, avec raison, un <strong>éditeur de textes</strong> et, qui comme son nom l'indique, permet ... (je vous laisse compléter cette phrase :-). Il existe de nombreux éditeurs de texte, mais deux d'entre eux sont des <em>stars</em> de la galaxie UNIX (<em>i.e.</em> le bon côté de la Force) <strong><a href='http://www.thomer.com/vi/vi.html'>vi</a></strong> et <strong><a href='http://www.gnu.org/software/emacs'>emacs</a></strong>. Le premier est un frêle chevalier juste vétu d'un pagne et ne payant pas de mine (un lointain frère de Yoda paraît-il). Le second est plus proche d'un transformer&nbsp;: en fonction de son interlocuteur, il peut ressembler à un vélo ou au Faucon Millenium&nbsp;!
+    </p>
+
+    <p>
+      On ne s'éternisera pas sur vi car vous le disséquerez avec le Dr Beaufils lors de vos séances de vivissection de système. Nous allons donc passer directement à une étude (très) sommaire de ce couteau suisse de l'édition qu'est emacs. Un peu de généalogie&nbsp;: emacs est un gros bébé né de l'imagination de <a href='http://www.stallman.org'>Richard STALLMAN</a> (si vous ne le connaissez pas, demandez à votre ami <a href='http://www.google.com/search?q=richard+stallman'>Google</a> ce qu'il en pense) initialement conçu pour participer à la création du projet <a href='http://www.gnu.org'>GNU</a> (pareil). L'intérêt de cet outil (tout comme vi) est que vous le trouverez sur tous les UNIX existants et qu'il vous permettra de créer de multiples textes quelque soit les langages que vous utilisez.
+    </p>
+
+    <p>
+      Emacs, c'est un peu le saxophone de l'édition de texte&nbsp;: il suffit de savoir souffler pour faire un son ... en revanche, il faut des années de pratique pour participer à <em><a href='http://www.google.com/search?q=a+kind+of+blue'>A&nbsp;Kind&nbsp;of&nbsp;Blue</a></em>&nbsp;! Vous allez donc commencer vos premiers pas d'emacsien en apprenant à le lancer et à éditer un petit texte.
+    </p>
+
+    <h3>Démarrer emacs&nbsp;: <code>emacs &</code> (et on n'oublie pas le &amp; avant de valider!)</h3>
+
+    <p>
+      Tout est dans le titre&nbsp;: placez-vous dans le terminal et demandez gentiment à ce dernier de lancer emacs en tapant la commande suivante <code>emacs&nbsp;&amp;</code>. N'oubliez pas le <code>&amp;</code>&nbsp;! Vous verrez plus tard lors de vos explorations système la signification de ce petit canard. Une fois la commande validée, vous devriez voir appaître la fenétre de l'éditeur (pas très sexy, il faut le reconnaître, mais n'oubliez pas que l'habit de ne fait pas le moine).
+    </p>
+    
+    <p>
+      La fenêtre d'emacs se décompose en trois importantes parties, soit du haut vers le bas&nbsp;: la barre de menu, la fenêtre d'édition et le <em>mini-buffer</em>.
+	  <br/>
+	  La barre de menu permet d'accéder aux fonctionnalités les plus courantes de l'éditeur, n'hésitez pas à sélectionner chacun des items pour voir ce qu'il y a au menu. La fenêtre d'édition arbore un magnifique gnou stylisé (quel joli animal) et quelques messages abscons de bienvenue. <strong>Le mini-buffer est un élément très important de l'éditeur&nbsp;: généralement, lorsqu'emacs cherche à communiquer avec vous, il le fait par l'intermédiaire de cette ligne, ne le perdez donc jamais de vue !</strong>
+    </p>
+
+    <p>
+      Dernière petite chose, Richard Stallman a les doigts crochus et aime apparemment les solos de Joe Satriani&nbsp;! Dit autrement, vous allez devoir maîtriser des enchaînements de touche digne des meilleurs solos de Jimmy Hendrix ... Vos meilleurs amies deviendront les touches <code>Control</code> (<code>CTRL</code>) et <code>Escape</code> (<code>ESC</code>), aussi appelée la touche <em>Méta</em>, auxquelles vous adjoindrez d'autres lettres pour lancer diverses commandes et entrer en symbiose avec emacs.
+    </p>
+
+    <h3>Les commandes de base&nbsp;: <code>CTRL-X&nbsp;CTRL-F</code> et <code>CTRL-X&nbsp;CTRL-S</code></h3>
+
+    <p>
+      Pour débuter vous allez créer l'inévitable <code>Hello World !</code> qui constitue le <em>arreuh</em> de l'informaticien :-)
+	</p>
+
+	<p>
+	  Pour cela&nbsp;:
+	</p>
+	<ol>
+	  <li>enfoncez la touche <code>CTRL</code> (et maintenez là enfoncée),</li>
+	  <li>puis enfoncez la touche <code>X</code> (vous pouvez la relâcher)</li>
+	  <li>et enfoncez de nouveau la touche <code>CTRL</code> (et maintenez là enfoncée),</li>
+	  <li>puis enfoncez la touche <code>F</code></li>
+	  <li>et relâchez tout&nbsp;!</li>
+	</ol>
+
+	<p>
+	  Cette combinaison de touches est noté <code>CTRL-X CTRL-F</code> (ou encore <code>C-X C-F</code> dans les documentations habituelles).
+	</p>
+
+	<p>
+	  Et là&nbsp;? Rien ne se passe&nbsp;?!?!!
+	</p>
+
+	<p>
+	  Et pourtant, si vous avez retenu l'important message de la section précédente et en portant votre regard sur le mini-buffer vous constaterez qu'emacs a réagi à votre appel et vous indique le répertoire courant. Placez-vous dans le répertoire <code>ap12/tp0</code> (ci ce n'est pas déjà le cas) en appuyant deux fois sur la touche tabulation (la zone d'édition se retrouve scindée en deux et la partie basse vous indique la liste des fichiers et répertoires présents dans le répertoire courant. Vous pouvez ensuite taper <code>ap</code> et tabulation et emacs devancera vos désirs en complétant promptement le fichier ou le répertoire indiqué. Une fois dans le répertoire <code>ap12/tp0</code>, écrivez (dans le mini-buffer) <code>Hello.java</code> et validez.
+    </p>
+
+    <p>
+      Ça y est, vous êtes prêts à créer votre premier code source&nbsp;!
+    </p>
+
+    <p>
+      Pour cela, recopiez (à la main, pas de copier/coller paresseux!) le texte ci-dessous (en respectant <strong>exactement</strong> ce qui est écrit).
+    </p>
+
+    <pre>
+class Hello extends Program {
+    void algorithm() {
+        println("Hello world!");
+    }
+}</pre>
+
+    <p>
+      Pour ne pas perdre votre précieux travail, utilisez la combinaison magique <code>CTRL-X CTRL-S</code> pour sauvegarder votre fichier (emacs vous indique qu'il a compris votre requête avec un message de confirmation dans le mini-buffer).
+    </p>
+
+    <h2>Chapitre III&nbsp;: Premiers pas avec Java</h2>
+
+    <p>
+      Maintenant que vous avez effectué la première phase, à savoir la saisie du programme grâce à un éditeur de texte, nous allons nous intéresser à la deuxième phase&nbsp;: transformer le code source en un fichier exécutable. Pour cela, placez vous dans le terminal et vérifiez que vous êtes bien dans le répertoire <code>ap12/tp0</code> qui contient votre fichier <code>Hello.java</code>. <strong>Il faudra toujours veiller à ce que le nom de votre fichier corresponde à celui du nom de votre programme&nbsp;!</strong> Demandez ensuite gentiment à ce suppôt de l'OS d'exécuter la transfiguration de votre code source en exécutable (on dit la <em>compilation</em>) à l'aide de l'invocation suivante&nbsp;:
+    </p>
+
+    <pre>
+javac -cp /home/public/ap12/ap.jar Hello.java</pre>
+
+    <p>
+      En regardant le contenu de votre répertoire de travail via un appel à la commande <code>ls</code> dans votre terminal vous devriez vous rendre compte qu'un nouveau fichier, nommé <code>Hello.class</code>, a été crée. Il s'agit d'une première version exécutable de votre programme source Java. Pour le faire fonctionner, il vous suffit d'appeler la machine JAVA en lui ordonnant d'exécuter votre premier programme via l'invocation suivante (notez que ce coup ci vous ne spécifiez que le nom du programme pas le nom du fichier)&nbsp;:
+    </p>
+
+    <pre>
+java -cp /home/public/ap12/ap.jar:. Hello</pre>
+
+    <blockquote>
+      Félicitations petit padawan, vous venez vaillament d'effectuer, sans le faire exprès (enfin presque), votre premier pas dans l'impitoyable monde de l'informatique et de la conception de logiciel&nbsp;! Maintenant que vous avez compris les étapes fondamentales de la création d'un programme (édition du code source, compilation et exécution), nous allons pouvoir passer aux choses sérieuses. Accrochez les ceintures&nbsp;: cela va décoller.
+    </blockquote>
+  </body>
+</html>

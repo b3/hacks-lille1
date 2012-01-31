@@ -1,4 +1,5 @@
 #!/bin/sh
+# Démarre l'émulateur TN5250 en se connectant sur l'AS/400 de l'IUT_INFO
 
 # Par défaut on utilise la machine du département info sauf si AS400 est fixée
 host="$AS400"

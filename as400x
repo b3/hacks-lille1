@@ -1,0 +1,106 @@
+#!/bin/sh
+
+# Par défaut on utilise la machine du département info sauf si AS400 est fixée
+host="$AS400"
+test -z "$host" && host=as400.iutinfo.fr
+localhost="`uname -n`"
+
+# Est-ce que tn5250 est installé ?
+if ! test -x /usr/bin/tn5250 ; then
+    cat <<EOF 1>&2
+
+tn5250 est inaccessible.
+
+Sous Debian ou Ubuntu exécuter la commande suivante pour l'installer :
+
+sudo aptitude install tn5250
+
+EOF
+    exit 1
+fi
+
+# Est-ce que xterm est installé ?
+if ! test -x /usr/bin/xterm ; then
+    cat <<EOF 1>&2
+
+xterm est inaccessible.
+
+Exécuter la commande suivante pour l'installer :
+
+sudo aptitude install xterm
+
+EOF
+    exit 1
+fi
+
+# X11 doit envoyer les bons codes pour les touches importantes de l'émulateur
+cat <<EOF | xrdb -merge
+
+*VT100*Translations: #override\n\
+    <Key>KP_Add: string("\030") \n\
+    <Key>KP_Subtract: string("\033M") \n\
+    <Key>KP_Multiply: string("*") \n\
+    <Key>KP_Divide: string("/") \n\
+        <Key>KP_0: string("0") \n\
+        <Key>KP_1: string("1") \n\
+        <Key>KP_2: string("2") \n\
+        <Key>KP_3: string("3") \n\
+        <Key>KP_4: string("4") \n\
+        <Key>KP_5: string("5") \n\
+        <Key>KP_6: string("6") \n\
+        <Key>KP_7: string("7") \n\
+        <Key>KP_8: string("8") \n\
+        <Key>KP_9: string("9") \n\
+        <Key>Scroll_Lock: string("\033H") \n\
+    ~Shift<Key>Print: string("\020") \n\
+        <Key>Control_L: string("\022") \n\
+        <Key>Escape: string("\001") \n\
+    Shift <Key>Print: string("\003") \n\
+        ~Shift <Key>F1: string("\0331") \n\
+        ~Shift <Key>F2: string("\0332") \n\
+        ~Shift <Key>F3: string("\0333") \n\
+        ~Shift <Key>F4: string("\0334") \n\
+        ~Shift <Key>F5: string("\0335") \n\
+        ~Shift <Key>F6: string("\0336") \n\
+        ~Shift <Key>F7: string("\0337") \n\
+        ~Shift <Key>F8: string("\0338") \n\
+        ~Shift <Key>F9: string("\0339") \n\
+        ~Shift <Key>F10: string("\0330") \n\
+        ~Shift <Key>F11: string("\033-") \n\
+        ~Shift <Key>F12: string("\033=") \n\
+        Shift <Key>F1: string("\033!") \n\
+        Shift <Key>F2: string("\033@") \n\
+        Shift <Key>F3: string("\033#") \n\
+        Shift <Key>F4: string("\033$") \n\
+        Shift <Key>F5: string("\033%") \n\
+        Shift <Key>F6: string("\033^") \n\
+        Shift <Key>F7: string("\033&") \n\
+        Shift <Key>F8: string("\033*") \n\
+        Shift <Key>F9: string("\033(") \n\
+        Shift <Key>F10: string("\033)") \n\
+        Shift <Key>F11: string("\033_") \n\
+        Shift <Key>F12: string("\033+") \n\
+        Shift <Key>Tab: string("\033[Z") \n\
+        Shift <Key>Left: string("\033\010") \n\
+        Shift <Key>Right: string("\033\025") \n\
+        Shift <Key>Home: string("\033\006") \n\
+
+EOF
+#*xt5250.XTerm.font: 10x20
+
+# Ne pas utiliser de locale.
+export LANG=C
+
+# Démarrer xterm avec les bons paramètres
+exec xterm \
+    -fa monospace-10 \
+    -en iso-8859-15 \
+    -name xt5250 \
+    -bg black \
+    -fg white \
+    -T "xt5250 - ${host}" \
+    +sb \
+    -geometry 80x25 \
+    -e /usr/bin/tn5250 map=297 env.DEVNAME="${USER}-${localhost}" ${host}
+
+    #-fa monospace-14 \

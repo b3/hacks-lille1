@@ -17,5 +17,5 @@ personnels de l'Université Lille 1.
 
  - vpnlille1
 
-  Script de démarrage/arrêt d'une connection au VPN de Lille 1.
+   Script de démarrage/arrêt d'une connection au VPN de Lille 1.
 

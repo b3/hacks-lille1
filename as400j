@@ -16,7 +16,7 @@ JAVA n'est pas accessible.
 
 Sous Ubuntu ou Debian exécuter la commande suivante pour l'installer :
 
-sudo apt-get install sun-java6-jdk
+sudo apt-get install openjdk-7-jdk
 
 EOF
     exit 1

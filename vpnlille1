@@ -184,7 +184,7 @@ case "$1" in
     "stop")
         verifie pgrep
         pid=$(pgrep openvpn)
-        test -z "$pid" || sudo kill 
+        test -z "$pid" || sudo kill $pid
         ;;
     *)
         echo "$(basename $0) {start|stop}"

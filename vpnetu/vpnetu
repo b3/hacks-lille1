@@ -2,9 +2,8 @@
 # Démarre/Arrête une connection au VPN de Lille 1 pour les étudiants
 
 vpnconf=`mktemp /tmp/lille1-XXXX.conf`
-ustlca=`mktemp /tmp/terena-XXXX.pem`
 
-trap "rm $vpnconf $ustlca" exit
+trap "rm $vpnconf" exit
 
 cat <<EOF >$vpnconf
 dev tap
@@ -27,29 +26,8 @@ auth-user-pass
 tls-remote vpn
 
 ## CERTIFICAT DE L'AUTORITE DE CONFIANCE
-# Donné sur la ligne de commande
 #ca Terena-chaine_autorites.pem
-
-## ALGO DE CRYPTAGES
-cipher AES-128-CBC
-
-## RELATIF AUX TESTS DE CONNEXION AU SERVEUR VPN
-tun-mtu 9000
-fragment 0
-mssfix 0
-
-## VERIFICATION DU LIEN VPN
-ping 10
-
-## COMPRESSION DES DONNEES
-comp-lzo
-
-## NIVEAU DE DEBUG
-verb 5
-
-EOF
-
-cat <<EOF >$ustlca
+<ca>
 -----BEGIN CERTIFICATE-----
 MIIEmDCCA4CgAwIBAgIQS8gUAy8H+mqk8Nop32F5ujANBgkqhkiG9w0BAQUFADCB
 lzELMAkGA1UEBhMCVVMxCzAJBgNVBAgTAlVUMRcwFQYDVQQHEw5TYWx0IExha2Ug
@@ -127,6 +105,28 @@ Nr4TDea9Y355e6cJDUCrat2PisP29owaQgVR1EX1n6diIWgVIEM8med8vSTYqZEX
 c4g/VhsxOBi0cQ+azcgOno4uG+GMmIPLHzHxREzGBHNJdmAPx/i9F4BrLunMTA5a
 mnkPIAou1Z5jJh5VkpTYghdae9C8x49OhgQ=
 -----END CERTIFICATE-----
+</ca>
+
+## ALGO DE CRYPTAGES
+cipher AES-128-CBC
+
+## RELATIF AUX TESTS DE CONNEXION AU SERVEUR VPN
+tun-mtu 9000
+fragment 0
+mssfix 0
+
+## VERIFICATION DU LIEN VPN
+ping 10
+
+## COMPRESSION DES DONNEES
+comp-lzo
+
+## NIVEAU DE DEBUG
+verb 5
+
+EOF
+
+cat <<EOF >$ustlca
 EOF
 
 # Vérifie la disponibilité d'une commande
@@ -148,8 +148,7 @@ case "$1" in
         verifie sudo
         verifie openvpn
         sudo openvpn --daemon \
-                     --config ${vpnconf} \
-                     --ca ${ustlca}
+                     --config ${vpnconf}
         ;;
     "stop")
         verifie pgrep

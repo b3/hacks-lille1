@@ -30,8 +30,9 @@ personnels de l'Université Lille 1.
 Copyright (C) 2006-2014 Bruno BEAUFILS.
 
 Les scripts distribués ici le sont sous les termes de la licence général
-publique GPL, version 2, disponibles dans le fichier [GPL](GPL).
+publique GPL, version 2, disponibles dans le fichier [GNU-GPL](GNU-GPL).
 
 Les autres documents distribués ici sont mis à disposition selon les termes de
 la Licence Creative Commons Attribution - Partage dans les Mêmes
-Conditions 4.0 International (CC-BY-SA), disponible dans le fichier [CC](CC).
+Conditions 4.0 International (CC-BY-SA), disponible dans le fichier
+[CC-BY-SA](CC-BY-SA).

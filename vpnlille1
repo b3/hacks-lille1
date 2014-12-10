@@ -12,6 +12,9 @@ dev tap
 
 ## IP DU SERVEUR
 <connection>
+remote 194.57.139.251 443 tcp
+</connection>
+<connection>
 remote 194.57.139.251 1194 tcp
 </connection>
 
@@ -25,7 +28,7 @@ auth-user-pass
 tls-remote vpn
 
 ## CERTIFICAT DE L'AUTORITE DE CONFIANCE
-# Donné en ligne de commande
+# Donné sur la ligne de commande
 #ca Terena-chaine_autorites.pem
 
 ## ALGO DE CRYPTAGES
@@ -36,10 +39,6 @@ tun-mtu-extra 32
 mssfix 1450
 pull
 
-##Pour Vista
-route-method exe
-route-delay 2
-
 ## VERIFICATION DU LIEN VPN
 ping 10
 
@@ -49,8 +48,6 @@ comp-lzo
 ## NIVEAU DE DEBUG
 verb 2
 
-#pour les PC windows 2000
-#ip-win32 ipapi
 EOF
 
 cat <<EOF >$ustlcert

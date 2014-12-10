@@ -2,10 +2,8 @@
 # Démarre/Arrête une connection au VPN de Lille 1
 
 vpnconf=`mktemp /tmp/lille1-XXXX.conf`
-ustlcert=`mktemp /tmp/ac-ustl-auth-1x-XXXX.crt`
-ustlca=`mktemp /tmp/terena-XXXX.pem`
 
-trap "rm $vpnconf $ustlcert $ustlca" exit
+trap "rm $vpnconf" exit
 
 cat <<EOF >$vpnconf
 dev tap
@@ -28,60 +26,8 @@ auth-user-pass
 tls-remote vpn
 
 ## CERTIFICAT DE L'AUTORITE DE CONFIANCE
-# Donné sur la ligne de commande
 #ca Terena-chaine_autorites.pem
-
-## ALGO DE CRYPTAGES
-cipher AES-256-CBC
-
-## RELATIF AUX TESTS DE CONNEXION AU SERVEUR VPN
-tun-mtu-extra 32
-mssfix 1450
-pull
-
-## VERIFICATION DU LIEN VPN
-ping 10
-
-## COMPRESSION DES DONNEES
-comp-lzo
-
-## NIVEAU DE DEBUG
-verb 2
-
-EOF
-
-cat <<EOF >$ustlcert
------BEGIN CERTIFICATE-----
-MIIE2zCCA8OgAwIBAgIQUeXxpaK6O6BMU4zS8MtYXTANBgkqhkiG9w0BAQUFADBk
-MRUwEwYKCZImiZPyLGQBGRYFbG9jYWwxGzAZBgoJkiaJk/IsZAEZFgt1bml2LWxp
-bGxlMTEUMBIGCgmSJomT8ixkARkWBHdpZmkxGDAWBgNVBAMTD0FDIFVTVEwgQXV0
-aC0xeDAeFw0wNDA5MjkwODM5NTNaFw0xNDA5MjkwODM5NTNaMGQxFTATBgoJkiaJ
-k/IsZAEZFgVsb2NhbDEbMBkGCgmSJomT8ixkARkWC3VuaXYtbGlsbGUxMRQwEgYK
-CZImiZPyLGQBGRYEd2lmaTEYMBYGA1UEAxMPQUMgVVNUTCBBdXRoLTF4MIIBIjAN
-BgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA0Z9vYjcHY3lXrucBGWSv5NWkq4+L
-cMKd7mXbH02oNjjNNwNoqTyQCtViAbUsKcemQbpx4IRJL28okTUp7ZeU/MHKpx99
-uWXxXufytPcfG7kXnFbrvNTfrJ7sgjXSg0FQRiqaLTDw3ug555FgyNa+cGIzOqp9
-+IyPzw5rI0m9XbpDCsg1qwj+AvfrKdKPcRcSsG24RzxJY5CbBY0vhMCb3iDsDX/0
-qssD7MiZeUzhgmYqF6mjBHdOKVX/YSBzS9oshdvrmXKA3nzAQJORlmxeTnr6Nw7Y
-s4SWzkzPygH/qIbu4VvcktyPGl9eeSmNRXOB9m5gZSKuJ+Yi7ZuynhYYhwIDAQAB
-o4IBhzCCAYMwCwYDVR0PBAQDAgGGMA8GA1UdEwEB/wQFMAMBAf8wHQYDVR0OBBYE
-FDRr+k4VqJD81lhzm/Suyr9NIR1zMIIBMAYDVR0fBIIBJzCCASMwggEfoIIBG6CC
-AReGgclsZGFwOi8vL0NOPUFDJTIwVVNUTCUyMEF1dGgtMXgsQ049Y3JpMnczZW4s
-Q049Q0RQLENOPVB1YmxpYyUyMEtleSUyMFNlcnZpY2VzLENOPVNlcnZpY2VzLENO
-PUNvbmZpZ3VyYXRpb24sREM9d2lmaSxEQz11bml2LWxpbGxlMSxEQz1sb2NhbD9j
-ZXJ0aWZpY2F0ZVJldm9jYXRpb25MaXN0P2Jhc2U/b2JqZWN0Q2xhc3M9Y1JMRGlz
-dHJpYnV0aW9uUG9pbnSGSWh0dHA6Ly9jcmkydzNlbi53aWZpLnVuaXYtbGlsbGUx
-LmxvY2FsL0NlcnRFbnJvbGwvQUMlMjBVU1RMJTIwQXV0aC0xeC5jcmwwEAYJKwYB
-BAGCNxUBBAMCAQAwDQYJKoZIhvcNAQEFBQADggEBAH6FJPhTZMO8a5xtS+KV9UEK
-3Y9IyW1q6Jp+NsRkqT/nBRNkiZQRijSnAuQsR1x5u/9zGjOWrOhaugPFFtNn+G8J
-QxsQIfUG2LzEybn3eFrXhIKTmbe36LK53fe9wygIKWPbRBXQ9XhCW7tKqJ+e1Vic
-KDZL191JOIamQl9kYpeOYEENQFPNjMLpApJA4THR4ycNzo8oVpAq4Ns5ew2XfxXr
-dZ68VMM/LKEZH2bVfjSQ0ipYSjjS5oQI+0G4lWRRvkogYTi9YgFEFmGtxj+LbFxh
-D8v7MXvI300HNjsHstMPl9/DZmBC7HWje8ywU3OvJBkcBgoqA3iVc/ThC7JtUs0=
------END CERTIFICATE-----
-EOF
-
-cat <<EOF >$ustlca
+<ca>
 -----BEGIN CERTIFICATE-----
 MIIEmDCCA4CgAwIBAgIQS8gUAy8H+mqk8Nop32F5ujANBgkqhkiG9w0BAQUFADCB
 lzELMAkGA1UEBhMCVVMxCzAJBgNVBAgTAlVUMRcwFQYDVQQHEw5TYWx0IExha2Ug
@@ -159,6 +105,25 @@ Nr4TDea9Y355e6cJDUCrat2PisP29owaQgVR1EX1n6diIWgVIEM8med8vSTYqZEX
 c4g/VhsxOBi0cQ+azcgOno4uG+GMmIPLHzHxREzGBHNJdmAPx/i9F4BrLunMTA5a
 mnkPIAou1Z5jJh5VkpTYghdae9C8x49OhgQ=
 -----END CERTIFICATE-----
+</ca>
+
+## ALGO DE CRYPTAGES
+cipher AES-256-CBC
+
+## RELATIF AUX TESTS DE CONNEXION AU SERVEUR VPN
+tun-mtu-extra 32
+mssfix 1450
+pull
+
+## VERIFICATION DU LIEN VPN
+ping 10
+
+## COMPRESSION DES DONNEES
+comp-lzo
+
+## NIVEAU DE DEBUG
+verb 2
+
 EOF
 
 # Vérifie la disponibilité d'une commande
@@ -175,8 +140,7 @@ case "$1" in
         verifie sudo
         verifie openvpn
         sudo openvpn --daemon \
-                     --config ${vpnconf} \
-                     --ca ${ustlca}
+                     --config ${vpnconf}
         ;;
     "stop")
         verifie pgrep

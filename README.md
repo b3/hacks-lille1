@@ -17,5 +17,11 @@ personnels de l'Université Lille 1.
 
  - vpnlille1
 
-   Script de démarrage/arrêt d'une connection au VPN de Lille 1.
+   Script simpliste de démarrage/arrêt d'une connection au VPN de Lille 1.
+
+ - vpnetu
+
+   Un peu de documentation sur le VPN à destination des étudiants ainsi qu'un
+   script simpliste (`vpnetu/vpnetu`) de démarrage/arrêt d'une connection au
+   VPN étudiant de Lille 1.
 

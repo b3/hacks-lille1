@@ -25,3 +25,13 @@ personnels de l'Université Lille 1.
    script simpliste (`vpnetu/vpnetu`) de démarrage/arrêt d'une connection au
    VPN étudiant de Lille 1.
 
+# Droits
+
+Copyright (C) 2006-2014 Bruno BEAUFILS.
+
+Les scripts distribués ici le sont sous les termes de la licence général
+publique GPL, version 2, disponibles dans le fichier [GPL](GPL).
+
+Les autres documents distribués ici sont mis à disposition selon les termes de
+la Licence Creative Commons Attribution - Partage dans les Mêmes
+Conditions 4.0 International (CC-BY-SA), disponible dans le fichier [CC](CC).

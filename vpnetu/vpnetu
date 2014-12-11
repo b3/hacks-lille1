@@ -122,27 +122,24 @@ ping 10
 comp-lzo
 
 ## NIVEAU DE DEBUG
-verb 5
+verb 2
 
-EOF
-
-cat <<EOF >$ustlca
 EOF
 
 # Vérifie la disponibilité d'une commande
 verifie ()
 {
     ! which "$1" 1>/dev/null 2>&1 && cat <<EOF 1>&2 && exit 1
-$(basename $0): $1 n'est pas disponible
+$(basename $0): erreur: $1 n'est pas disponible !
 
-Sous Debian/Ubuntu/Mint essayez de l'installer via la commande
+Sous Debian/Ubuntu essayez de l'installer via la commande
 
     sudo apt-get install $1
 
 EOF
 }
 
-# et hop au boulot
+# Le travail effectif
 case "$1" in
     "start")
         verifie sudo

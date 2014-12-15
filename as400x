@@ -1,5 +1,12 @@
 #!/bin/sh
-# Démarre l'émulateur TN5250 en se connectant sur l'AS/400 de l'IUT_INFO
+# as400x - Démarre l'émulateur TN5250 en se connectant sur l'AS/400 de l'IUT_INFO
+# Copyright (C) 2006-2014 Bruno BEAUFILS
+#
+# This program is free software; you can redistribute it and/or modify it
+# under the terms of the GNU General Public License as published by the Free
+# Software Foundation; either version 2 of the License, or (at your option)
+# any later version.
+
 
 # Par défaut on utilise la machine du département info sauf si AS400 est fixée
 host="$AS400"

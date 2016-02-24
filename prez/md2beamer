@@ -1,21 +1,43 @@
 #!/bin/bash
 # Convertit un fichier markdown en une présentation via LaTeX/Beamer
 #
-# usage: md2beamer [OPTIONS] SOURCE [FICHIERS...] 
+# usage: md2beamer [OPTIONS] SOURCE [FICHIERS-INCLUS...] 
 #
-# md2beamer est un "gros" wrapper autour de pandoc qui permet de convertir un
-# fichier au format Markdown en un diaporama PDF via LaTeX et Beamer.
+# md2beamer est un wrapper autour de pandoc qui permet de convertir un fichier
+# au format Markdown en un diaporama PDF via LaTeX et Beamer.
 #
-# SOURCE est le fichier au fichier Markdown source de la présentation. Il doit
-# avoir comme suffixe '.md'. Le diaporama produit a le même nom avec le
-# suffixe '.pdf' qui remplace '.md'.
+# SOURCE est le fichier au format Markdown source de la présentation qui doit
+# avoir comme suffixe '.md'. Si la présentation inclus d'autres fichiers
+# (images, etc.) on doit les spécifier à la suite. Les formats d'images
+# utilisables sont pdf ou png.
 #
-# Si la présentation utilise d'autres fichiers (images, etc.) on peut les
-# spécifier via FICHIERS.
+# OPTIONS
 #
-# Les autres fichiers nécessaires (thèmes beamer, etc.) sont embaqués en fin
-# de script (pour pouvoir diffuser juste le script). L'embarquement est fait
-# entre deux lignes sous la forme :
+#     -h, --help           affiche ce message d'aide
+#     -t, --theme THEME    utilise THEME pour la forme du diaporama au lieu de
+#                          lille1. list permet de lister les thèmes. 
+#     -s, --slide-level N  spéficie le niveau de titre qui définit une diapo
+#                          au lieu du niveau 2
+#     -L, --latex          produit le source LaTeX plutôt que le résultat PDF
+#     -c, --check          vérifie la présence des outils nécessaires
+#     -l, --list-check     liste les paquets Debian nécessaires
+#     -d, --debug          conserve le répertoire de travail (/tmp/md2beamer)
+#
+# EXEMPLES
+#
+# Vérifier que les outils nécessaires sont disponibles sur la machine :
+#
+#     md2beamer -c
+#
+# Convertir le fichier presentation.md qui inclut l'image image.pdf
+#
+#     md2beamer presentation.md image.pdf
+#
+# DETAILS TECHNIQUES
+#
+# Les autres fichiers nécessaires (thèmes beamer, logos) sont embaqués en fin
+# de script (pour pouvoir diffuser le script et rien d'autre). L'embarquement
+# est fait entre deux lignes sous la forme :
 #
 # # begin-THEMES FILENAME COMMAND
 # ...
@@ -30,36 +52,23 @@
 # l'extraire) ou base64 -d (quand le contenu du fichier est binaire et qu'on
 # l'a embarqué en base64).
 #
-# OPTIONS possibles :
-#     -h, --help           affiche ce message d'aide
-#
-#     -t, --theme THEME    utilise THEME pour la forme du diaporama. list
-#                          permet de lister les thèmes disponibles
-#
-#     -s, --slide-level N  spéficie le niveau de titre qui définit une diapo
-#
-#     -l, --latex          produit le source LaTeX plutôt que le résultat PDF
-#
-#     -c, --check          vérifie la présence des outils nécessaires
-#
-#     -d, --debug          conserve le répertoire de travail (/tmp/mdbeamer)
 
 # FIXME: FICHIER devrait pouvoir être un chemin quelconque (absolu par exemple)
-# FIXME: implémenter LATEX_ONLY et DEBUG
-# FIXME: permettre de copier d'autres fichiers pour la compilation (image par exemple)
 
 doc () { sed -n '2,/^$/ { s/^ *#// ; s/^ //g ; t ok ; d ; :ok ; p }' <$0 ; }
 err () { echo "$(basename $0): error: $*" 1>&2 ; exit 1 ; }
 log () { date "+%F %T $(basename $0) $*" | tee -a "$LOG" ; }
 abs () { echo $(cd $(dirname $1) ; pwd)/$(basename $1) ; }
+mute () { 1>/dev/null 2>&1 $* ; }
 missing () { err "$1 is unavailable" ; }
 
 # réussit si les outils nécessaires sont accessibles
 check ()
 {
-    which pandoc 1>/dev/null 2>&1 || missing pandoc
-    which base64 1>/dev/null 2>&1 || missing base64
-    which pdflatex 1>/dev/null 2>&1 || missing pdflatex
+    mute which pandoc  || missing pandoc
+    mute which base64 || missing base64 coreutils
+    mute which pdflatex || missing pdflatex texlive-latex-base
+    mute kpsewhich beamer.cls || missing beamer.cls texlive-latex-recommended
 }
 
 # extrait un fichier embarqué dans le script
@@ -69,7 +78,7 @@ extract-file ()
     d=$1
     f=$2
     shift 2
-    sed -n -r '/^# begin-([^ ]+) '$f' .*$/,/^# end '$f'$/ p' $abscmd \
+    sed -n -r '/^# begin-([^ ]+) '$f' .*$/,/^# end '$f'$/ p' $cmd \
         | sed '1d ; $d' \
         | $* >$d/$f
 }
@@ -78,7 +87,7 @@ extract-file ()
 # args: theme
 list-files ()
 {
-    grep '^# begin-' $abscmd \
+    grep '^# begin-' $cmd \
         | grep -e "-$1[- ]" \
         | sed -r -e 's/^# begin-[^ ]+ (.*)$/\1/'
 }
@@ -86,7 +95,7 @@ list-files ()
 # liste les thèmes qui embarque des fichiers dans le script
 list-themes ()
 {
-    grep '^# begin-' $abscmd \
+    grep '^# begin-' $cmd \
         | sed -r -e 's/^# begin-([^ ]+) .*$/\1/' \
         | tr '-' '\n' | sort | uniq
 }
@@ -100,13 +109,17 @@ TMPDIR=/tmp/md2beamer
 SLIDELEVEL=2
 DESTDIR=$PWD
 
-abscmd=$(abs $0)
+cmd=$(abs $0)
 
 while [ ! -z "$1" ] ;
 do
     case "$1" in
         "-h"|"--help") doc && exit ;;
         "-c"|"--check") check && exit ;;
+        "-l"|"--list-check")
+            egrep '\|\| missing' $0 | sed -r 's/^.* (.*)$/\1/'
+            exit
+            ;;
         "-t"|"--theme")
             shift
             THEME=$1
@@ -116,15 +129,15 @@ do
             shift
             SLIDELEVEL=$1
             ;;
-        "-l"|"--latex") LATEX_ONLY=true ; err "unsupported" ;;
-        "-d"|"--debug") DEBUG=true ; err "unsupported" ;;
-        *) break;
+        "-L"|"--latex") LATEX_ONLY=true ;;
+        "-d"|"--debug") DEBUG=true ;;
+        *) break;;
     esac
     shift
 done
 
 [ -z $1 ] && err "missing source file"
-srcmd=$(abs $1)
+SRC=$(abs $1)
 dsttex=$(basename $1 .md).tex
 dstpdf=$(basename $1 .md).pdf
 shift
@@ -138,14 +151,25 @@ done
 
 [ $# -ne 0 ] && cp $* $TMPDIR
 
-cd $TMPDIR
-pandoc -s -f markdown+pandoc_title_block -t beamer -V theme=$THEME --slide-level=$SLIDELEVEL $srcmd > $dsttex
-# FIXME: Mettre un trap sur error en cas de problème à la compilation
-pdflatex -halt-on-error $dsttex 1>/dev/null 2>&1
-pdflatex -halt-on-error $dsttex 1>/dev/null 2>&1
-mv $dstpdf $DESTDIR
-cd ..
-rm -rf $TMPDIR
+$LATEX_ONLY || cd $TMPDIR
+
+pandoc -s \
+       -f markdown+pandoc_title_block \
+       -t beamer \
+       -V theme=$THEME \
+       -V fontsize=10 \
+       --slide-level=$SLIDELEVEL \
+       $SRC > $dsttex
+
+if ! $LATEX_ONLY ; then
+    trap "err $PWD/$dsttex: compilation failure" ERR
+    pdflatex -halt-on-error $dsttex 1>/dev/null 2>&1
+    pdflatex -halt-on-error $dsttex 1>/dev/null 2>&1
+
+    mv $dstpdf $DESTDIR
+
+    $DEBUG && { cd .. ; rm -rf $TMPDIR ; }
+fi
 
 ##############################################################################
 

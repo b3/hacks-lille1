@@ -154,7 +154,7 @@ done
 $LATEX_ONLY || cd $TMPDIR
 
 pandoc -s \
-       -f markdown+pandoc_title_block \
+       -f markdown+pandoc_title_block+pipe_tables-implicit_figures \
        -t beamer \
        -V theme=$THEME \
        -V fontsize=10 \

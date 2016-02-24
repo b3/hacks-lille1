@@ -1,0 +1,129 @@
+\documentclass[10pt,t]{beamer}
+
+% Paquets LaTeX %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Une gestion correcte du français (en entrée et en sortie)
+\usepackage[french]{babel}
+\usepackage{type1ec}         % devant fontenc (cf type1ec.sty)
+\usepackage[T1]{fontenc}     % devant inputenc (utf8 choisi en fonction de ça)
+\usepackage[utf8]{inputenc}
+\DeclareUnicodeCharacter{20AC}{\euro} % pour la saisie du caractère euro
+
+%% Des "jolies" polices de caractères
+\usepackage{lmodern}            % pour sf et tt
+\usepackage{fourier}            % pour rm
+\usepackage{bbm}                % pour les mathbbm
+
+%% Plein de symboles
+\usepackage{amssymb}            % Les symboles mathématiques de l'AMS
+\usepackage{latexsym}           % Quelques symboles manquants dans LaTeX 2e
+\usepackage{marvosym}           % Quelques symboles en vrac par Martin Vogel
+\usepackage{wasysym}            % Quelques symboles en vrac par Roland Waldi
+\usepackage{pifont}             % Les symboles Dingbats
+\usepackage{textcomp}           % \textcopyleft
+\usepackage[copyright]{ccicons} % Les (c) comme dans Creative Commons
+\usepackage[official,right]{eurosym} % L'euro
+
+%% Quelques paquets utiles
+\usepackage{array}              % pour faciliter les styles de tableaux
+\usepackage{relsize}            % pour faciliter le changement de taille des polices
+\usepackage[normalem]{ulem}     % pour avoir des soulignements funky
+\usepackage{tikz}               % pour les dessins portables
+\usepackage{pgfpages}           % pour les présentations en double-écran
+
+% Paramétrages Beamer %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usetheme{lille1}
+%\setbeameroption{show notes on second screen} % les notes sur le second écran
+
+% Méta-données du document %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{Un modèle de cours à Lille~1}
+\subtitle{Avec \LaTeX{} et Beamer}
+\author{Prénom NOM}
+\institute{Université Lille~1 \and IUT «A»}
+\date{2015/2016}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\begin{frame}[plain,label=titre]
+  \titlepage
+\end{frame}
+
+\begin{frame}
+  \frametitle{Plan}
+  \tableofcontents
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}% [shrink] si on veut forcer à tenir sur une seul frame
+  \frametitle{Introduction}
+
+  \structure{Un exemple}
+
+  \begin{itemize}
+  \item Cette présentation est produite par \texttt{\textbf{modele-cours-lille1.tex}}
+  \item Elle est conçue pour des cours magistraux à Lille~1 pour des gens d'une composante
+  \item Son contenu est un exemple pour comprendre comment
+
+    \begin{itemize}
+    \item composer avec \LaTeX{}
+    \item préparer une présentation avec Beamer
+    \end{itemize}
+
+  \end{itemize}
+
+  \pause
+
+  \structure{Un modèle}
+
+  \begin{itemize}
+  \item Elle constitue un modèle pour faire d'autres cours :
+    
+    \begin{enumerate}
+    \item créer un nouveau dossier ;
+    \item y copier les fichiers 
+
+      \begin{itemize}
+      \item \texttt{\textbf{beamerthemelille1.sty}}, qui est le thème Beamer pour Lille~1,
+      \item \texttt{\textbf{logo-univ-lille1.pdf}}, qui est le logo de Lille~1 utilisé,
+      \end{itemize}
+
+    \item y copier, renommer puis modifier le fichier \texttt{\textbf{modele-cours-lille1.tex}} ;
+    \item y compiler le fichier.
+    \end{enumerate}
+  \end{itemize}
+
+  \pause
+
+  \structure{La seconde partie est une courte référence \LaTeX{}}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Faire une présentation en \LaTeX{} avec Beamer}
+
+\subsection{Les bases}
+\input{01-bases}
+
+\subsection{Des conseils de productions}
+\input{02-conseils}
+
+\section{Une petite référence}
+
+\subsection{\LaTeX{}}
+\input{03-latex}
+
+\subsection{Beamer}
+\input{04-beamer}
+
+\subsection{Références}
+\input{05-references}
+
+\againframe{titre} % Replace une diapo nommée avec l'option label
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}

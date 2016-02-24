@@ -1,0 +1,108 @@
+% Un thème Beamer pour l'Université de Lyon 2
+
+% Paramétrages génériques %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Les couleurs de Lille 1
+\definecolor{Lille1Pourpre}{RGB}{174,37,115}      % en HTML : ae2573
+\definecolor{Lille1NeutreNoir}{RGB}{56,47,45}     % en HTML : 382f2d
+\definecolor{Lille1NeutreBleu}{RGB}{127,160,172}  % en HTML : 7fa0ac
+\definecolor{Lille1NeutreRose}{RGB}{216,200,209}  % en HTML : d8c8d1
+\definecolor{Lille1FroideBleu}{RGB}{29,66,138}    % en HTML : 1d428a
+\definecolor{Lille1FroideVert}{RGB}{0,179,152}    % en HTML : 00b398
+\definecolor{Lille1FroideCyan}{RGB}{141,200,232}  % en HTML : 8dc8e8
+\definecolor{Lille1ChaudeViolet}{RGB}{114,0,98}   % en HTML : 720062
+\definecolor{Lille1ChaudeMarron}{RGB}{211,130,53} % en HTML : d38235
+\definecolor{Lille1ChaudeTaupe}{RGB}{213,203,159} % en HTML : d5cb9f
+\definecolor{Lille1ViveRouge}{RGB}{249,66,58}     % en HTML : f9423a
+\definecolor{Lille1ViveVert}{RGB}{120,190,32}     % en HTML : 78be20
+\definecolor{Lille1ViveJaune}{RGB}{252,227,0}     % en HTML : fce300
+
+%% Les polices Lyon 2
+\usepackage[scaled=.92]{helvet}
+
+%% Paramétrage hyperref
+\hypersetup{%
+  colorlinks,%
+  linkcolor=,%
+  urlcolor=Lille1Pourpre}
+  
+% Paramétrage Beamer %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\mode<presentation>             % pour le mode présentation seulement
+
+%% Logos
+\titlegraphic{%
+  \raisebox{-0.5\height}{\includegraphics[width=6em]{logo-univ-lille1}}
+}
+\logo{\includegraphics[height=1.5em]{logo-univ-lille1}}
+
+%% Couleurs
+\usecolortheme{spruce}
+\setbeamercolor{normal text}{fg=Lille1NeutreNoir}
+\setbeamercolor{structure}{fg=black}
+\setbeamercolor{frametitle}{fg=white,bg=Lille1Pourpre}
+\setbeamercolor{title}{fg=Lille1Pourpre,bg=white}
+\setbeamercolor{subtitle}{fg=Lille1NeutreBleu}
+\setbeamercolor{footline}{fg=white,bg=Lille1Pourpre}
+\setbeamercolor{block title}{fg=white,bg=Lille1Pourpre}
+\setbeamercolor{block body}{fg=Lille1NeutreNoir,bg=Lille1NeutreRose}
+\setbeamercolor{block title example}{fg=white,bg=Lille1NeutreBleu}
+\setbeamercolor{block body example}{fg=Lille1NeutreNoir,bg=Lille1NeutreRose}
+\setbeamercolor{alerted text}{fg=Lille1Pourpre}
+
+%% Polices de caractères
+%\usefonttheme[stillsansseriftext]{serif}
+\usefonttheme[onlylarge]{structurebold}
+\setbeamerfont{date in head/foot}{series=\bfseries}
+\setbeamerfont{date}{series=\bfseries}
+\setbeamerfont{alerted text}{series=\bfseries}
+
+%% Traduction en français
+\uselanguage{french}
+\languagepath{french}
+\deftranslation[to=french]{Definition}{Définition}
+\deftranslation[to=french]{Example}{Exemple}
+\deftranslation[to=french]{Theorem}{Théorème}
+
+%% Adaptation des modèles
+
+%%% Sections dans la table des matières
+\setbeamertemplate{sections/subsections in toc}[sections numbered]
+
+%%% Une page simple (avec table des matières) devant chaque section
+\setbeamertemplate{section page}{\tableofcontents[currentsection,subsubsectionstyle=show/show/show/shaded]}
+\AtBeginSection[]{\frame{\sectionpage}}
+
+%%% Styles des blocs
+\setbeamertemplate{blocks}[rounded][shadow=true]
+\setbeamerfont{block title}{size={}}
+
+%%% Style des listes
+\setbeamertemplate{items}[triangle]
+
+%%% Type des continuations
+\setbeamertemplate{frametitle continuation}[from second][(suite)]
+
+%%% Des pieds de diapo simples
+\setbeamertemplate{footline}
+{
+  \leavevmode%
+  \hbox{%
+    \begin{beamercolorbox}[wd=\paperwidth,ht=2.25ex,dp=1ex]{footline}
+      \usebeamerfont{date in head/foot}
+      \hspace*{1.25ex}
+      \inserttitle{} \hspace*{3ex} \emph{\textmd{\insertsection}}
+      \hfill
+      \insertframenumber{} / \inserttotalframenumber
+      \hspace*{1.25ex}
+      \llap{\raisebox{2em}{\insertlogo}\hspace{.75ex}}
+    \end{beamercolorbox}}%
+  \vskip0pt%
+}
+\setbeamertemplate{navigation symbols}{} % pas de navigation affichée
+\setbeamertemplate{sidebar right}{}      % pas de logo
+
+
+%% D'autres paramètres Beamer en vrac
+\setbeamercovered{dynamic}      % on découvre lentement les trucs cachés
+\setbeamersize{text margin left=1em,text margin right=1em}

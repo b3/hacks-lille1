@@ -1,0 +1,84 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+  \frametitle{Présentation}
+
+  \begin{itemize}
+  \item \LaTeX{} est un outil de composition
+    
+    \begin{enumerate}
+    \item on prépare les sources avec un éditeur (Texmaker par exemple)
+    \item on compile pour produire un fichier PDF
+    \end{enumerate}
+
+    \pause
+    
+  \item Beamer est un paquet \LaTeX{} pour faire des présentations
+    
+    \begin{enumerate}
+    \item on crée la structure (plan) du cours
+    \item on ajoute ensuite les diapos
+    \end{enumerate}
+
+    \pause
+
+  \item \LaTeX{} et Beamer séparent la définition du fond et de la forme
+    \begin{center}
+      \begin{alertenv}
+        Il faut se concentrer sur la rédaction du fond
+      \end{alertenv}
+    \end{center}
+
+    \pause
+
+  \item Préparer un cours avec \LaTeX{} et Beamer est simple
+
+    \begin{itemize}
+    \item il ne faut (d'abord) pas s'occuper de la forme
+    \item il faut avoir un peu de \alert{discipline}
+    \end{itemize}
+    \note{On peut mettre des notes visibles juste par l'orateur}
+  \end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+  \frametitle{Découpage en plusieurs fichiers}
+
+  \begin{itemize}
+  \item Une présentation peut-être composée grâce à plusieurs fichiers sources
+  \item Le fichier principal est celui qui doit être compilé
+
+    \begin{itemize}
+    \item Il fait référence à d'autres fichiers qu'il inclut pendant la compilation
+    \item Il est le seul à avoir besoin des entêtes de configuration
+    \end{itemize}
+
+  \item Ça a plein d'avantages
+
+    \begin{itemize}
+    \item On évite d'avoir un seul gros fichier
+    \item On peut réutiliser facilement des parties de présentation 
+    \end{itemize}
+
+    \pause
+
+  \item Sous Texmaker, lors de chaque session de travail
+
+    \begin{itemize}
+    \item Ouvrir le fichier principal
+    \item Le définir comme document principal
+
+      \begin{itemize}
+      \item menu «\emph{Options}»,
+      \item choix «\emph{Définir le document courant comme document 'maître'}»
+      \end{itemize}
+
+    \item Ouvrir le(s) fichier(s) voulu(s) et les compiler normalement
+    \end{itemize}
+
+  \end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

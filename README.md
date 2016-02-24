@@ -1,5 +1,5 @@
-On trouve ici quelques scripts et autres documents utiles aux étudiants et aux
-personnels de l'Université Lille 1.
+On trouve ici quelques scripts, modèles et autres documents utiles aux
+étudiants et aux personnels de l'Université Lille 1.
 
  - as400j
 
@@ -25,9 +25,14 @@ personnels de l'Université Lille 1.
    script simpliste (`vpnetu/vpnetu`) de démarrage/arrêt d'une connection au
    VPN étudiant de Lille 1.
 
+- prez
+
+   Des modèles pour faire des présentations ou des cours en LaTeX avec Beamer
+   ou à partir de source Markdown.
+
 # Droits
 
-Copyright (C) 2006-2014 Bruno BEAUFILS.
+Copyright (C) 2006-2016 Bruno BEAUFILS.
 
 Les scripts distribués ici le sont sous les termes de la licence général
 publique GPL, version 2, disponibles dans le fichier [GNU-GPL](GNU-GPL).

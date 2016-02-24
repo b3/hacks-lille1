@@ -1,0 +1,76 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}[fragile]
+  \frametitle{Les blocs dans Beamer}
+
+  \structure{Blocs libres}
+  
+  \begin{block}{Un bloc important}
+    Les points suivants définissent l'importance
+
+    \begin{itemize}
+    \item un truc
+    \item un bidule
+    \end{itemize}
+    
+  \end{block}
+
+  \pause  
+
+  \structure{Définition, théorèmes et exemples}
+
+  \begin{definition}
+    Les cons ça osent tous c'est à ça qu'on les reconnait
+  \end{definition}
+
+  \begin{theorem}
+    Il n'y a pas de plus grand nombre premier
+  \end{theorem}
+
+  \begin{example}
+    Ce fichier est plein d'exemple à comparer au résultat en PDF
+  \end{example}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}[fragile]
+  \frametitle{D'autres fonctionnalités Beamer}
+
+  \structure{Les recouvrements}
+    
+  \begin{itemize}
+  \item \verb|\pause| pour pauser momentanément la diapo
+    \pause
+  \item<2> suffixer des commandes
+
+    \begin{itemize}
+    \item pour spécifier un truc apparaissant uniquement dans certains recouvrements
+
+      \begin{itemize}
+      \item $n$ via \verb|\item<|$n$\verb|>|
+      \item $n$ à $m$ via \verb|\item<|$n-m$\verb|>|
+      \item $n$ et $m$ via \verb|\item<|$n,m$\verb|>|
+      \end{itemize}
+
+    \item se place après certaines commandes (\verb|\item|, \verb|\alert|, etc.)
+    \end{itemize}
+
+  \end{itemize}
+  
+  \pause  
+  
+  \structure{Les mises en avant}
+  
+  \begin{itemize}
+  \item On peut \alert{alerter} à propos de l'€
+  \item On peut citer du texte
+    
+    \begin{quotation}
+      Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec hendrerit tempor tellus. Donec pretium posuere tellus. Proin quam nisl, tincidunt et, mattis eget, convallis nec, purus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nulla posuere. Donec vitae dolor. Nullam tristique diam non turpis. Cras placerat accumsan nulla. Nullam rutrum. Nam vestibulum accumsan nisl.
+    \end{quotation}
+    
+  \end{itemize} 
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

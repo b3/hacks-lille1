@@ -1,0 +1,167 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+  \frametitle{Courte référence \LaTeX{}}
+  \framesubtitle{Listes, emphases, liens}
+
+  \structure{Une liste standard}
+  
+  \begin{itemize}
+  \item un point en \emph{emphase}
+    \note{Ici il faut dire un bidule sur l'emphase}
+  \item un point \textbf{important}
+  \item un autre point \underline{souligné}
+  \end{itemize} 
+  
+  \pause  
+  
+  \structure{Une liste numérotée}
+  
+  \begin{enumerate}
+  \item un point avec un lien vers le \href{http://www.univ-lille1.fr}{site web de l'Université}
+  \item un autre point sur le site web : \url{http://www.univ-lille1.fr}
+  \item un choix avec de l'€
+  \end{enumerate}
+
+  \pause
+
+  \structure{Une liste de description}
+
+  Quelques environnements permettent des structurations 
+
+  \begin{description}
+  \item[itemize] définit une liste standard
+  \item[enumerate] définit une liste ordonnée
+  \item[tabular] permet de faire des tableaux
+  \item[displaymath] permet d'afficher des mathématiques
+  \item[equation] permet d'afficher une équation et de la numéroter
+  \end{description}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}[allowframebreaks] % une grande diapo qui sera découpée auto (pas de pause dedans)
+  \frametitle{Courte référence \LaTeX{}}
+  \framesubtitle{Mathématiques}
+
+  \structure{3 possibilités de saisir du contenu \emph{mathématiques}}
+
+  \begin{enumerate}
+  \item En ligne : $ \sum_{i=0}^{i=10} a_{i} $
+
+  \item En affiche :
+    \begin{displaymath}
+      \sum_{i=0}^{i=10} a_{i}
+    \end{displaymath}
+
+  \item En équation pour y faire référence plus tard
+    \begin{equation}
+      \label{eq:1}
+      F(x) = \int_{a}^{b}\sin(x)dx 
+    \end{equation}
+  \end{enumerate}
+  
+  \structure{Des fonctionnalités accessibles uniquement en mode mathématique}
+
+  \begin{itemize}
+  \item Les lettres grecs et exotiques sont accessibles facilement :
+
+    \begin{itemize}
+    \item en minuscules : $ \alpha, \beta, \gamma, \delta, \epsilon, \zeta, \eta, \theta, \iota, \kappa, \lambda, \mu, \nu, \xi, \pi, \rho, \sigma, \tau, \upsilon, \phi, \chi, \psi, \omega $
+    \item en capitales : $ \Gamma, \Delta, \Theta, \Lambda, \Xi, \Pi, \Sigma, \Upsilon, \Phi, \Psi, \Omega $
+    \end{itemize}
+
+  \item Les notations d'ensemble sont composables : $ \mathbbm{N}, \mathbbm{Z}^{+}, \mathbbm{Q}, \mathbbm{R} $
+
+  \item Beaucoup de symboles mathématiques et autres sont disponibles
+
+    \begin{itemize}
+    \item $ \neq, \approx, \simeq, \le, \ge, \iff, \equiv, \in, \infty, \forall, \exists, \subset, \subseteq, \times, \emptyset, \rightarrow, \qed, \prod, \coprod, \nabla, \partial, \prec, \preceq, \cdots $
+    \item $ \spadesuit, \heartsuit, \diamondsuit, \clubsuit, \ell, \sharp, \flat, \cdots $
+    \item \url{http://detexify.kirelabs.org} permet de les trouver en les dessinant
+    \end{itemize}
+
+  \item On a plein de constructions
+
+    \begin{description}
+    \item[racine] $ \sqrt[3]{x + y} $
+    \item[fractions] $ \frac{x\times 3}{4} $
+    \item[relation] $ x \stackrel{i+j}{\longmapsto} y $
+    \item[somme] $ \sum_{0}^{\infty} x_{i} $
+    \item[produit] $ \prod_{0}^{\infty} x_{i} $
+    \item[intégral] $ \int_{a}^{b} \pi_{i} $
+    \item[regroupement]
+      $ \underline{dessous} $,
+      $ \overbrace{dessus}^{i\rightarrow\infty} $,
+      sur le côté
+      \begin{math} % pareil que $
+        f(x) = \left\{
+          \begin{array}{l@{~:~}r}
+            x = 0 & x \\
+            x \neq 0 & \frac{x}{2}
+          \end{array}
+        \right.
+      \end{math}
+    \end{description}
+
+  \item On a des points de suite dans tous les sens $ \dots, \cdots, \vdots, \ddots $
+  \end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}[fragile]
+  \frametitle{Courte référence \LaTeX{}}
+  \framesubtitle{Avancé}
+
+  \structure{Tableaux}
+
+  \begin{itemize}
+  \item Une suite de lignes arrangées en colonnes via \verb|tabular| ou \verb|array| (maths)
+  \item Il doit y avoir une ligne blanche devant et derrière
+    
+    \begin{tabular}{|c|r|l|}
+      \firsthline
+      colonnes & définition         & paramètre de l'environnement via l, c, r  \\ \cline{2-3}
+               & traits verticaux   & \verb!|! dans la définition des colonnes  \\ \hline
+      lignes   & terminaison        & $\backslash\backslash$ en fin de ligne    \\ \cline{2-3}
+               & traits horizontaux & sur toute la largeur via \verb|\hline|    \\ \cline{2-3}
+               &                    & sous certaines colonnes via \verb|\cline| \\ \hline
+    \end{tabular}
+  \end{itemize}
+
+  \structure{Références aux équations}
+
+  \begin{itemize}
+  \item on la nomme avec \verb|\label{}|
+  \item on y fait référence avec \verb|\ref{}|
+  \item par exemple l'équation \ref{eq:1} utilise une intégrale
+  \end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}[fragile]
+  \frametitle{Courte référence \LaTeX{}}
+  \framesubtitle{Avancé}
+
+  \structure{Caractères spéciaux}
+
+  \begin{center}
+    \begin{tabular}{rl}
+      \emph{caractère} & \emph{commande} \\ \hline
+      \# & \verb|\#| \\
+      \$ & \verb|\$| \\
+      \% & \verb|\%| \\
+      \& & \verb|\&| \\
+      \textasciitilde & \verb|\textasciitilde| \\
+      \_ & \verb|\_| \\
+      \textasciicircum & \verb|\textasciicircum| \\
+      $\backslash$ & \verb|$\backslash$| \\
+      \{ & \verb|\{| \\
+      \} & \verb|\}| \\
+    \end{tabular}
+  \end{center}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

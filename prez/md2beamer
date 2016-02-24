@@ -1,15 +1,19 @@
 #!/bin/bash
 # Convertit un fichier markdown en une présentation via LaTeX/Beamer
 #
-# usage: md2beamer [OPTIONS] FICHIER
+# usage: md2beamer [OPTIONS] SOURCE [FICHIERS...] 
 #
 # md2beamer est un "gros" wrapper autour de pandoc qui permet de convertir un
 # fichier au format Markdown en un diaporama PDF via LaTeX et Beamer.
 #
-# FICHIER doit avoir comme suffixe '.md'. Le diaporama produit a le même nom
-# avec le suffixe '.pdf' qui remplace '.md'.
+# SOURCE est le fichier au fichier Markdown source de la présentation. Il doit
+# avoir comme suffixe '.md'. Le diaporama produit a le même nom avec le
+# suffixe '.pdf' qui remplace '.md'.
 #
-# Les fichiers nécessaires (thèmes beamer, logos, etc.) sont embaqués en fin
+# Si la présentation utilise d'autres fichiers (images, etc.) on peut les
+# spécifier via FICHIERS.
+#
+# Les autres fichiers nécessaires (thèmes beamer, etc.) sont embaqués en fin
 # de script (pour pouvoir diffuser juste le script). L'embarquement est fait
 # entre deux lignes sous la forme :
 #
@@ -42,6 +46,7 @@
 
 # FIXME: FICHIER devrait pouvoir être un chemin quelconque (absolu par exemple)
 # FIXME: implémenter LATEX_ONLY et DEBUG
+# FIXME: permettre de copier d'autres fichiers pour la compilation (image par exemple)
 
 doc () { sed -n '2,/^$/ { s/^ *#// ; s/^ //g ; t ok ; d ; :ok ; p }' <$0 ; }
 err () { echo "$(basename $0): error: $*" 1>&2 ; exit 1 ; }
@@ -73,7 +78,7 @@ extract-file ()
 # args: theme
 list-files ()
 {
-    grep '^# begin-' $0 \
+    grep '^# begin-' $abscmd \
         | grep -e "-$1[- ]" \
         | sed -r -e 's/^# begin-[^ ]+ (.*)$/\1/'
 }
@@ -81,7 +86,7 @@ list-files ()
 # liste les thèmes qui embarque des fichiers dans le script
 list-themes ()
 {
-    grep '^# begin-' $0 \
+    grep '^# begin-' $abscmd \
         | sed -r -e 's/^# begin-([^ ]+) .*$/\1/' \
         | tr '-' '\n' | sort | uniq
 }
@@ -119,9 +124,10 @@ do
 done
 
 [ -z $1 ] && err "missing source file"
+srcmd=$(abs $1)
 dsttex=$(basename $1 .md).tex
 dstpdf=$(basename $1 .md).pdf
-set $(abs $1)
+shift
 
 mkdir -p $TMPDIR
 
@@ -130,8 +136,11 @@ do
     extract-file $TMPDIR $f
 done
 
+[ $# -ne 0 ] && cp $* $TMPDIR
+
 cd $TMPDIR
-pandoc -s -f markdown+pandoc_title_block -t beamer -V theme=$THEME --slide-level=$SLIDELEVEL $1 > $dsttex
+pandoc -s -f markdown+pandoc_title_block -t beamer -V theme=$THEME --slide-level=$SLIDELEVEL $srcmd > $dsttex
+# FIXME: Mettre un trap sur error en cas de problème à la compilation
 pdflatex -halt-on-error $dsttex 1>/dev/null 2>&1
 pdflatex -halt-on-error $dsttex 1>/dev/null 2>&1
 mv $dstpdf $DESTDIR

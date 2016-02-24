@@ -14,3 +14,7 @@ et la classe [Beamer](https://bitbucket.org/rivanvx/beamer/wiki/Home). Les
 fichiers importants sont alors le
 [thème Beamer (`lille1`)](beamerthemelille1.sty) et le
 [logo vectoriel de l'Université de Lille 1](logo-univ-lille1.pdf).
+
+Le script [md2beamer](md2beamer) permet de transformer un fichier Markdown en
+diaporama PDF grâce à beamer. Un exemple est disponible dans
+[modele-presentation.md](modele-presentation.mdf).

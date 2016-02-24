@@ -3,16 +3,17 @@
 #
 # usage: md2beamer [OPTIONS] FICHIER
 #
-# Convertit un fichier au format Markdown en un diaporama via LaTeX et
-# Beamer. La conversion est faite grâce à pandoc et TeXlive. FICHIER doit
-# avoir un suffixe '.md'. Le diaporama produit a le même nom avec le suffixe
-# '.pdf'.
+# md2beamer est un "gros" wrapper autour de pandoc qui permet de convertir un
+# fichier au format Markdown en un diaporama PDF via LaTeX et Beamer.
+#
+# FICHIER doit avoir comme suffixe '.md'. Le diaporama produit a le même nom
+# avec le suffixe '.pdf' qui remplace '.md'.
 #
 # Les fichiers nécessaires (thèmes beamer, logos, etc.) sont embaqués en fin
 # de script (pour pouvoir diffuser juste le script). L'embarquement est fait
 # entre deux lignes sous la forme :
 #
-# # begin-THEMES FILENAME FORMAT
+# # begin-THEMES FILENAME COMMAND
 # ...
 # # end FILENAME
 #

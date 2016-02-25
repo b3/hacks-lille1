@@ -20,7 +20,9 @@
 
             md2beamer nom-du-fichier.md
 
-    4. être content
+    4. si le fichier inclus des images ajouter leur nom en fin de ligne
+
+            md2beamer nom-du-fichier.md image1.pdf image2.png
 
 # Le reste de la présentation
 
@@ -28,8 +30,8 @@
 
 ### Un truc structurant
 
-> - Un point en *emphase*
-> - Un autre point très **important** qui apparit après le premier
+- Un point en *emphase*
+- Un autre point très **important** qui apparait après le premier
 
 . . .
 
@@ -37,5 +39,7 @@
 
 - un point sur le [site web de Lille1](http://www.univ-lille1.fr)
 - un autre point sur le site web : <http://www.univ-lille1.fr>
-- un autre point avec de l'€
+- un autre point avec de l'€ et une image
+
+![TeX Friendly zone](tex-friendly-zone.jpg){ width=50% }
 

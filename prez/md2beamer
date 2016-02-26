@@ -137,6 +137,8 @@ do
     shift
 done
 
+check || err "missing tools"
+
 [ -z $1 ] && err "missing source file"
 SRC=$(abs $1)
 dsttex=$(basename $1 .md).tex

@@ -1,5 +1,6 @@
 #!/bin/bash
 # Convertit un fichier markdown en une présentation via LaTeX/Beamer
+# Copyright (C) 2016 Bruno BEAUFILS
 #
 # usage: md2beamer [OPTIONS] SOURCE [FICHIERS-INCLUS...] 
 #
@@ -54,7 +55,7 @@
 # l'a embarqué en base64).
 #
 
-# FIXME: FICHIER devrait pouvoir être un chemin quelconque (absolu par exemple)
+# FIXME: SOURCE et FICHIERS-INCLUS devraient pouvoir être un chemin quelconque (absolu par exemple)
 
 doc () { sed -n '2,/^$/ { s/^ *#// ; s/^ //g ; t ok ; d ; :ok ; p }' <$0 ; }
 err () { echo "$(basename $0): error: $*" 1>&2 ; exit 1 ; }
@@ -160,7 +161,7 @@ pandoc -s \
        -f markdown+pandoc_title_block+pipe_tables-implicit_figures+link_attributes \
        --toc \
        -t beamer \
-       --template=$TMPDIR/beamer.pandoc \
+       --template=$TMPDIR/beamer-pandoc.tex \
        -V theme=$THEME \
        -V fontsize=10 \
        --slide-level=$SLIDELEVEL \
@@ -477,7 +478,7 @@ Ugo+PgpzdGFydHhyZWYKOTQ0OQolJUVPRgo=
 
 ##############################################################################
 
-# begin-all beamer.pandoc cat
+# begin-all beamer-pandoc.tex cat
 \documentclass[10pt,t]{beamer}
 
 % Paquets LaTeX %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -530,6 +531,7 @@ $endif$
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 
 % Paramétrages Beamer %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 $if(theme)$\usetheme{$theme$}$endif$
 %\setbeameroption{show notes on second screen} % les notes sur le second écran
 

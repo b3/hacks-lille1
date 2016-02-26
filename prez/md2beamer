@@ -180,6 +180,8 @@ exit 0
 
 # begin-lille1 beamerthemelille1.sty cat
 % Un thème Beamer pour l'Université de Lille 1
+% Copyright (C) 2015-2016 Bruno BEAUFILS
+% This file is distributed under the WTFPL license.
 
 % Paramétrages génériques %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -198,7 +200,7 @@ exit 0
 \definecolor{Lille1ViveVert}{RGB}{120,190,32}     % en HTML : 78be20
 \definecolor{Lille1ViveJaune}{RGB}{252,227,0}     % en HTML : fce300
 
-%% Les polices Lyon 2
+%% La police Lille 1 n'est pas libre (Verdana) on prend le truc le plus proche
 \usepackage[scaled=.92]{helvet}
 
 %% Paramétrage hyperref
@@ -282,7 +284,6 @@ exit 0
 }
 \setbeamertemplate{navigation symbols}{} % pas de navigation affichée
 \setbeamertemplate{sidebar right}{}      % pas de logo
-
 
 %% D'autres paramètres Beamer en vrac
 \setbeamercovered{dynamic}      % on découvre lentement les trucs cachés

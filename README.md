@@ -41,3 +41,8 @@ Les autres documents distribués ici sont mis à disposition selon les termes de
 la Licence Creative Commons Attribution - Partage dans les Mêmes
 Conditions 4.0 International (CC-BY-SA), disponible dans le fichier
 [CC-BY-SA](CC-BY-SA).
+
+**Certains** fichiers sont distribués sous la licence *Do What The Fuck You
+Want To Public License (WTFPL)*, qui est une licence libre, disponible dans
+le fichier [WTFPL](WTFPL). Dans ce cas une mention **explicite** à cette
+licence est spécifié dans le fichier en question.

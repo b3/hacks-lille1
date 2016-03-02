@@ -175,7 +175,7 @@ if ! $LATEX_ONLY ; then
     mv $dstpdf $DESTDIR
 fi
 
-$DEBUG && { cd .. ; rm -rf $TMPDIR ; }
+$DEBUG || { cd .. ; rm -rf $TMPDIR ; }
 
 ##############################################################################
 

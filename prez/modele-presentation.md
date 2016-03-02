@@ -41,5 +41,4 @@
 - un autre point sur le site web : <http://www.univ-lille1.fr>
 - un autre point avec de l'€ et une image
 
-![TeX Friendly zone](tex-friendly-zone.jpg){ width=50% }
-
+![TeX Friendly Zone](tex-friendly-zone.jpg){ width=33% }

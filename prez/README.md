@@ -8,14 +8,15 @@ faciliter la production de support de présentation (*Powerpoint* en novlangue)
 avec un rendu simple mais spécifique.
 
 Pour ceux qui connaissent bien [LaTeX](http://www.latex-project.org) et la
-classe [Beamer](https://bitbucket.org/rivanvx/beamer/wiki/Home). Les fichiers
-importants sont alors le thème Beamer (`lille1`)
-[`beamerthemelille1.sty`](beamerthemelille1.sty) et le
-logo vectoriel de l'Université de Lille 1 [`logo-univ-lille1.pdf`](logo-univ-lille1.pdf).
+classe [Beamer](https://bitbucket.org/rivanvx/beamer/wiki/Home), les fichiers
+importants sont le thème Beamer
+[`beamerthemelille1.sty`](beamerthemelille1.sty) (`lille1`) et le logo
+vectoriel de l'Université de Lille 1
+[`logo-univ-lille1.pdf`](logo-univ-lille1.pdf).
 
 Pour les *débutants* pour bien utiliser ces modèles il est recommandé de lire
 d'abord [modele-cours-lille1.pdf](modele-cours-lille1.pdf) puis de le relire
-une seconde fois en comparant avec le contenu de
+une seconde fois en comparant avec le contenu du fichier source
 [modele-cours-lille1.tex](modele-cours-lille1.tex).
 
 La même chose peut-être faite avec

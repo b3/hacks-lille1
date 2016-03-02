@@ -26,7 +26,7 @@
 
 # Le reste de la présentation
 
-## La première diapo
+## La seconde diapo
 
 ### Un truc structurant
 

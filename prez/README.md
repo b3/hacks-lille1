@@ -1,3 +1,5 @@
+# Modèles de diaporamas pour Lille 1
+
 Les fichiers présents ici s'adressent aux personnes qui veulent des modèles de
 présentation *propres* (c'est-à-dire avec exigence sur la qualité du résultat)
 utilisant l'identité de l'[Université de Lille 1](http://www.univ-lille1.fr).

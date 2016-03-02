@@ -21,7 +21,7 @@
 #                          au lieu du niveau 2
 #     -L, --latex          produit le source LaTeX plutôt que le résultat PDF
 #     -c, --check          vérifie la présence des outils nécessaires
-#     -l, --list-check     liste les paquets Debian nécessaires
+#     -l, --list-debian    liste les paquets Debian nécessaires
 #     -d, --debug          conserve le répertoire de travail (/tmp/md2beamer)
 #
 # EXEMPLES
@@ -62,15 +62,15 @@ err () { echo "$(basename $0): error: $*" 1>&2 ; exit 1 ; }
 log () { date "+%F %T $(basename $0) $*" | tee -a "$LOG" ; }
 abs () { echo $(cd $(dirname $1) ; pwd)/$(basename $1) ; }
 mute () { 1>/dev/null 2>&1 $* ; }
-missing () { err "$1 is unavailable" ; }
+need () { err "$1 is unavailable" ; }
 
 # réussit si les outils nécessaires sont accessibles
 check ()
 {
-    mute which pandoc  || missing pandoc
-    mute which base64 || missing base64 coreutils
-    mute which pdflatex || missing pdflatex texlive-latex-base
-    mute kpsewhich beamer.cls || missing beamer.cls texlive-latex-recommended
+    mute which pandoc || need pandoc
+    mute which base64 || need base64 coreutils
+    mute which pdflatex || need pdflatex texlive-latex-base
+    mute kpsewhich beamer.cls || need beamer.cls texlive-latex-recommended
 }
 
 # extrait un fichier embarqué dans le script
@@ -118,8 +118,8 @@ do
     case "$1" in
         "-h"|"--help") doc && exit ;;
         "-c"|"--check") check && exit ;;
-        "-l"|"--list-check")
-            egrep '\|\| missing' $0 | sed -r 's/^.* (.*)$/\1/'
+        "-l"|"--list-debian")
+            egrep '\|\| need' $0 | sed -r 's/^.* (.*)$/\1/'
             exit
             ;;
         "-t"|"--theme")
@@ -138,7 +138,7 @@ do
     shift
 done
 
-check || err "missing tools"
+check || err "needed tools missing"
 
 [ -z $1 ] && err "missing source file"
 SRC=$(abs $1)

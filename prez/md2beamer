@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Convertit un fichier markdown en une présentation via LaTeX/Beamer
 # Copyright (C) 2016 Bruno BEAUFILS
 #
@@ -16,7 +16,7 @@
 #
 #     -h, --help           affiche ce message d'aide
 #     -t, --theme THEME    utilise THEME pour la forme du diaporama au lieu de
-#                          lille1. list permet de lister les thèmes. 
+#                          lille1. 'list' permet de lister les thèmes.
 #     -s, --slide-level N  spéficie le niveau de titre qui définit une diapo
 #                          au lieu du niveau 2
 #     -L, --latex          produit le source LaTeX plutôt que le résultat PDF
@@ -33,6 +33,17 @@
 # Convertir le fichier presentation.md qui inclut l'image image.pdf
 #
 #     md2beamer presentation.md image.pdf
+#
+# DEPENDANCES
+#
+# Pour fonctionner md2beamer a besoin que 'pandoc' ainsi qu'une installation
+# TeX (avec 'pdflatex' et la classe 'beamer.cls') soit accessible. Seul la
+# distribution TeXLive disponible pour Unix (sous le nom MacTeX pour Mac OS X)
+# a été testée.
+#
+# [pandoc]: http://pandoc.org
+# [texlive]: http://tug.org/texlive
+# [mactex]: http://tug.org/mactex
 #
 # DETAILS TECHNIQUES
 #
@@ -51,18 +62,25 @@
 #
 # COMMAND est la commande à utiliser pour reconstruire le fichier,
 # généralement c'est cat (quand le contenu est textuel et qu'il faut juste
-# l'extraire) ou base64 -d (quand le contenu du fichier est binaire et qu'on
-# l'a embarqué en base64).
-#
+# l'extraire) ou base64 --decode (quand le contenu du fichier est binaire et
+# qu'on l'a embarqué en base64).
 
 # FIXME: SOURCE et FICHIERS-INCLUS devraient pouvoir être un chemin quelconque (absolu par exemple)
 
+# FreeBSD et GNU n'ont pas la même option pour activer les ERE dans sed
+# FIXME: ne marche pas si le sed disponible est strictement POSIX (aka ni GNU, ni FreeBSD)
+if sed v </dev/null >/dev/null 2>&1 ; then
+    _sed() { sed -r "$@" ; }    # GNU
+else
+    _sed() { sed -E "$@" ; }    # (FreeBSD)
+fi
+
 doc () { sed -n '2,/^$/ { s/^ *#// ; s/^ //g ; t ok ; d ; :ok ; p }' <$0 ; }
-err () { echo "$(basename $0): error: $*" 1>&2 ; exit 1 ; }
-log () { date "+%F %T $(basename $0) $*" | tee -a "$LOG" ; }
-abs () { echo $(cd $(dirname $1) ; pwd)/$(basename $1) ; }
+die () { echo "${0##*/}: error: $*" 1>&2 ; exit 1 ; }
+log () { date "+%F %T ${0##*/} $*" | tee -a "$LOG" ; }
+abs () { echo $(cd $(dirname $1) ; pwd)/${1##*/} ; }
 mute () { 1>/dev/null 2>&1 $* ; }
-need () { err "$1 is unavailable" ; }
+need () { die "$1 is unavailable" ; }
 
 # réussit si les outils nécessaires sont accessibles
 check ()
@@ -80,7 +98,7 @@ extract-file ()
     d=$1
     f=$2
     shift 2
-    sed -n -r '/^# begin-([^ ]+) '$f' .*$/,/^# end '$f'$/ p' $cmd \
+    _sed -n '/^# begin-([^ ]+) '$f' .*$/,/^# end '$f'$/ p' $cmd \
         | sed '1d ; $d' \
         | $* >$d/$f
 }
@@ -91,14 +109,14 @@ list-files ()
 {
     grep '^# begin-' $cmd \
         | grep -e "-$1[- ]" -e '# begin-all '\
-        | sed -r -e 's/^# begin-[^ ]+ (.*)$/\1/'
+        | _sed -e 's/^# begin-[^ ]+ (.*)$/\1/'
 }
 
 # liste les thèmes qui embarque des fichiers dans le script
 list-themes ()
 {
     grep '^# begin-' $cmd \
-        | sed -r -e 's/^# begin-([^ ]+) .*$/\1/' \
+        | _sed -e 's/^# begin-([^ ]+) .*$/\1/' \
         | tr '-' '\n' | sort | uniq
 }
 
@@ -119,13 +137,13 @@ do
         "-h"|"--help") doc && exit ;;
         "-c"|"--check") check && exit ;;
         "-l"|"--list-debian")
-            egrep '\|\| need' $0 | sed -r 's/^.* (.*)$/\1/'
+            egrep '\|\| need' $0 | _sed 's/^.* (.*)$/\1/'
             exit
             ;;
         "-t"|"--theme")
             shift
             THEME=$1
-            ["$1" = "list" ] && list-themes && exit 0
+            [ "$1" = "list" ] && list-themes && exit 0
             ;;
         "-s"|"--slide-level")
             shift
@@ -138,9 +156,9 @@ do
     shift
 done
 
-check || err "needed tools missing"
+check || die "needed tools missing"
 
-[ -z $1 ] && err "missing source file"
+[ -z $1 ] && die "missing source file"
 SRC=$(abs $1)
 dsttex=$(basename $1 .md).tex
 dstpdf=$(basename $1 .md).pdf
@@ -295,7 +313,7 @@ exit 0
 
 ##############################################################################
 
-# begin-lille1 logo-univ-lille1.pdf base64 -d
+# begin-lille1 logo-univ-lille1.pdf base64 --decode
 JVBERi0xLjUKJbXtrvsKMyAwIG9iago8PCAvTGVuZ3RoIDQgMCBSCiAgIC9GaWx0ZXIgL0ZsYXRl
 RGVjb2RlCj4+CnN0cmVhbQp4nCvkClQo5CrkMlQwAEIQqWugZ2lgYmlpqZCcy6WfaKCQXqygX2Gq
 4JLPFUikYjNSFJuTotiCFMWWUMVcAAwJMWUKZW5kc3RyZWFtCmVuZG9iago0IDAgb2JqCiAgIDY2

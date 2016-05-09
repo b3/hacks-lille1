@@ -186,7 +186,7 @@ pandoc -s \
        $SRC > $dsttex
 
 if ! $LATEX_ONLY ; then
-    trap "err $PWD/$dsttex: compilation failure" ERR
+    trap "die $PWD/$dsttex: compilation failure" ERR
     pdflatex -halt-on-error $dsttex 1>/dev/null 2>&1
     pdflatex -halt-on-error $dsttex 1>/dev/null 2>&1
 

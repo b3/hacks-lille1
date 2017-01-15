@@ -10,9 +10,9 @@ Notez qu'il existe d'autres ressources (Moodle par exemple) qui ne demandent pas
 
 ## Condition d'accès
 
-L'accès au VPN n'est permis qu'après s'être authentifié sur le [portail](http://portail.univ-lille1.fr) de l'établissement. Vous n'aurez donc accès à ce service qu'à l'issue de votre première connexion au et après l'avoir activé dans la rubrique <em>Mon compte</em> de celui-ci.
+L'accès au VPN n'est permis qu'après s'être authentifié sur le [portail](http://portail.univ-lille1.fr) de l'établissement. Vous n'aurez donc accès à ce service qu'à l'issue de votre première connexion au portail et après l'avoir activé dans la rubrique <em>Mon compte</em> de celui-ci.
 
-**Les services de l'Universite seront également très attentif à ce que votre poste soit parfaitement sécurisé. Système d'exploitation, anti-virus et outils utilisés à jour.**
+**Les services de l'Université seront également très attentif à ce que votre poste soit parfaitement sécurisé. Système d'exploitation, anti-virus et outils utilisés doivent être à jour.**
 
 ------------------------------------------------------------------------------
 

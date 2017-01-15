@@ -1,6 +1,6 @@
 #!/bin/bash
 # vpnlille1 - Démarre/Arrête une connection au VPN de Lille 1
-# Copyright (C) 2006-2014 Bruno BEAUFILS
+# Copyright (C) 2006-2016 Bruno BEAUFILS
 #
 # This program is free software; you can redistribute it and/or modify it
 # under the terms of the GNU General Public License as published by the Free
@@ -27,9 +27,10 @@ client
 
 ## AUTHENTIFICATION PAR LOGIN/MDP
 auth-user-pass
+#auth-nocache
 
 ## NOM DU SERVEUR VPN A VERIFIER AU DEMARRAGE
-tls-remote vpn
+verify-x509-name vpn.univ-lille1.fr name
 
 ## CERTIFICAT DE L'AUTORITE DE CONFIANCE
 #ca Terena-chaine_autorites.pem

@@ -137,7 +137,7 @@ EOF
 verifie ()
 {
     ! which "$1" 1>/dev/null 2>&1 && cat <<EOF 1>&2 && exit 1
-$(basename $0): erreur: $1 n'est pas disponible !
+${0##*/}: erreur: $1 n'est pas disponible !
 
 Sous Debian/Ubuntu essayez de l'installer via la commande
 
@@ -160,6 +160,6 @@ case "$1" in
         test -z "$pid" || sudo kill $pid
         ;;
     *)
-        echo "$(basename $0) {start|stop}"
+        echo "${0##*/} {start|stop}"
         ;;
 esac

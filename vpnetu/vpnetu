@@ -1,6 +1,6 @@
 #!/bin/bash
 # vpnetu - Démarre/Arrête une connection au VPN de Lille 1 pour les étudiants
-# Copyright (C) 2006-2014 Bruno BEAUFILS
+# Copyright (C) 2006-2016 Bruno BEAUFILS
 #
 # This program is free software; you can redistribute it and/or modify it
 # under the terms of the GNU General Public License as published by the Free
@@ -27,9 +27,10 @@ client
 
 ## AUTHENTIFICATION PAR LOGIN/MDP
 auth-user-pass
+#auth-nocache
 
 ## NOM DU SERVEUR VPN A VERIFIER AU DEMARRAGE
-tls-remote vpn
+verify-x509-name vpn.univ-lille1.fr name
 
 ## CERTIFICAT DE L'AUTORITE DE CONFIANCE
 #ca Terena-chaine_autorites.pem
@@ -136,7 +137,7 @@ EOF
 verifie ()
 {
     ! which "$1" 1>/dev/null 2>&1 && cat <<EOF 1>&2 && exit 1
-$(basename $0): erreur: $1 n'est pas disponible !
+${0##*/}: erreur: $1 n'est pas disponible !
 
 Sous Debian/Ubuntu essayez de l'installer via la commande
 
@@ -159,6 +160,6 @@ case "$1" in
         test -z "$pid" || sudo kill $pid
         ;;
     *)
-        echo "$(basename $0) {start|stop}"
+        echo "${0##*/} {start|stop}"
         ;;
 esac

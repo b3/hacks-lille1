@@ -40,7 +40,7 @@ Quelque soit le système d'exploitation utilisé, les fichiers de configuration 
  3. Copier les fichiers de configuration dans le répertoire `/etc/openvpn`
 
         su root
-        cp  openvpn_etu.ovpn Terena-chaine_autorites.pem /etc/openvpn
+        cp openvpn_etu.ovpn Terena-chaine_autorites.pem /etc/openvpn
 
 ## Windows
 

@@ -38,9 +38,9 @@ auth-user-pass
 verify-x509-name vpn.univ-lille1.fr name
 
 ## GESTION DU DNS
-script-security 2
-up /etc/openvpn/update-resolv-conf
-down /etc/openvpn/update-resolv-conf
+### script-security 2
+### up /etc/openvpn/update-resolv-conf
+### down /etc/openvpn/update-resolv-conf
 
 ## CERTIFICAT DE L'AUTORITE DE CONFIANCE
 <ca>

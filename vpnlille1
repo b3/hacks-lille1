@@ -24,11 +24,9 @@ cat <<EOF >$vpnconf
 dev tap
 
 ## IP DU SERVEUR
-<connection>
 remote 194.57.139.253
 port 443
 proto tcp-client
-</connection>
 
 ## TYPE DE CONFIG
 client

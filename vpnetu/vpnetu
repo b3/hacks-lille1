@@ -34,9 +34,6 @@ client
 ## AUTHENTIFICATION PAR LOGIN/MDP
 auth-user-pass
 
-## NOM DU SERVEUR VPN A VERIFIER AU DEMARRAGE
-#verify-x509-name vpn.univ-lille1.fr name
-
 ## CERTIFICAT DE L'AUTORITE DE CONFIANCE
 #ca Terena-chaine_autorites.pem
 <ca>
@@ -125,7 +122,6 @@ cipher AES-128-CBC
 ## RELATIF AUX TESTS DE CONNEXION AU SERVEUR VPN
 tun-mtu 9000
 fragment 0
-#mssfix 0
 
 ## VERIFICATION DU LIEN VPN
 ping 10

@@ -1,11 +1,11 @@
 #!/bin/bash
-# vpnlille1 - Démarre/Arrête une connection au VPN de Lille 1
+# vpnlille1 - Démarre/Arrête une connection au VPN de Lille 1 (personnels)
 #
 # usage: vpnlille1 COMMANDE
 #
 # COMMANDE
-#      start             démarre une connection au VPN de Lille 1
-#      stop              stoppe la connection au VPN de Lille 1
+#      start             démarre une connection au VPN personnels de Lille 1
+#      stop              stoppe la connection au VPN personnels de Lille 1
 #      conf              génère un fichier LILLE1.ovpn
 #      -h, --help, help  affiche ce message d'aide
 

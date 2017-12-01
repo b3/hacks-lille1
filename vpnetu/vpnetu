@@ -1,13 +1,22 @@
 #!/bin/bash
-# vpnetu - Démarre/Arrête une connection au VPN de Lille 1 pour les étudiants
-# Copyright (C) 2006-2016 Bruno BEAUFILS
+# vpnetu - Démarre/Arrête une connection au VPN de Lille 1 (étudiants)
+#
+# usage: vpnetu COMMANDE
+#
+# COMMANDE
+#      start             démarre une connection au VPN éudiants de Lille 1
+#      stop              stoppe la connection au VPN étudiants de Lille 1
+#      conf              génère un fichier LILLE1-ETU.ovpn
+#      -h, --help, help  affiche ce message d'aide
+
+# Copyright (C) 2006-2017 Bruno BEAUFILS
 #
 # This program is free software; you can redistribute it and/or modify it
 # under the terms of the GNU General Public License as published by the Free
 # Software Foundation; either version 2 of the License, or (at your option)
 # any later version.
 
-vpnconf=`mktemp /tmp/lille1-XXXX.conf`
+vpnconf=/tmp/LILLE1-ETU.ovpn
 
 trap "rm $vpnconf" exit
 
@@ -15,22 +24,18 @@ cat <<EOF >$vpnconf
 dev tap
 
 ## IP DU SERVEUR
-<connection>
-remote 194.57.139.252 1194 tcp
-</connection>
-<connection>
-remote 194.57.139.252 443 tcp
-</connection>
+remote 194.57.139.252
+port 443
+proto udp
 
 ## TYPE DE CONFIG
 client
 
 ## AUTHENTIFICATION PAR LOGIN/MDP
 auth-user-pass
-#auth-nocache
 
 ## NOM DU SERVEUR VPN A VERIFIER AU DEMARRAGE
-verify-x509-name vpn.univ-lille1.fr name
+#verify-x509-name vpn.univ-lille1.fr name
 
 ## CERTIFICAT DE L'AUTORITE DE CONFIANCE
 #ca Terena-chaine_autorites.pem
@@ -120,7 +125,7 @@ cipher AES-128-CBC
 ## RELATIF AUX TESTS DE CONNEXION AU SERVEUR VPN
 tun-mtu 9000
 fragment 0
-mssfix 0
+#mssfix 0
 
 ## VERIFICATION DU LIEN VPN
 ping 10
@@ -146,6 +151,9 @@ Sous Debian/Ubuntu essayez de l'installer via la commande
 EOF
 }
 
+# doc is included as comments from 2nd line of the script to first empty line
+doc () { sed -n '2,/^$/ { s/^ *#// ; s/^ //g ; t e ; d ; :e p }' <$0 ; }
+
 # Le travail effectif
 case "$1" in
     "start")
@@ -159,7 +167,13 @@ case "$1" in
         pid=$(pgrep openvpn)
         test -z "$pid" || sudo kill $pid
         ;;
+    "conf")
+        cp ${vpnconf} .
+        ;;
+    "-h"|"--help"|"help")
+        doc
+        ;;
     *)
-        echo "${0##*/} {start|stop}"
+        echo "${0##*/}: erreur: aucune action demandée, essayez '${0##*/} help'" 1>&2
         ;;
 esac

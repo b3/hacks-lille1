@@ -15,10 +15,6 @@ On trouve ici quelques scripts, modèles et autres documents utiles aux
  
    L'enoncé du TP de prise en main en DUT informatique.
 
- - [vpnlille1](vpnlille1)
-
-   Script simpliste de démarrage/arrêt d'une connection au VPN de Lille 1.
-
  - [vpn](vpn)
 
    Un peu de documentation sur les réseaux privés virtuels (VPN) de

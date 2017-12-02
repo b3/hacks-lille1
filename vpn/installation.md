@@ -1,12 +1,14 @@
-# Installation du VPN Lille 1
+# Installation du VPN Étudiants Lille 1
 
 ## Fichiers de configuration
 
-Quelque soit le système d'exploitation utilisé, les fichiers de configuration sont les mêmes. Ils sont disponibles dans une archive nommée `fichiers-vpn-etu.zip` disponible sur [moodle](http://moodle.univ-lille1.fr/mod/resource/view.php?id=77862) et sur le site [d'assistance](https://assistance.iut-infobio.priv.univ-lille1.fr/files/_vpn/fichiers_VPN_ETU.zip) du service informatique du département (accessible uniquement depuis le campus).
+Quelque soit le système d'exploitation utilisé, les fichiers de configuration sont les mêmes. Ils sont disponibles ici même ou dans une archive nommée `50937_VPN_ETU_Config_Linuxv2.zip` disponible surle site du [Centre de Ressources Informatique](http://cri.univ-lille1.fr/Services-proposes/reseau/VPN-etudiant) de l'Université.
+
+Les documentations données ici sont rédigés et donc valide le 1er décembre 2017.
 
 ## Linux
 
-### Ubuntu
+### Ubuntu (version 17.10 a
 
  1. Installer le paquet `openvpn`
 
@@ -15,32 +17,26 @@ Quelque soit le système d'exploitation utilisé, les fichiers de configuration 
 
  2. Installer le paquet `network-manager-openvpn` pour avoir une interface graphique simplifiant l'utilisation
 
-        sudo apt-get install network-manager-openvpn
+        sudo apt-get install network-manager-openvpn network-manager-openvpn
 
- 3. Décompacter le fichier  fichiers-vpn-etu.zip
-
-        unzip fichiers-vpn-etu.zip
-
- 4. Importer les fichiers de configuration :
+ 3. Importer le fichier de configuration [`LILLE1-ETU.ovpn`](LILLE1-ETU.ovpn):
 
     > Menu Système → Préférences → Connexions réseau → Onglet VPN → Importez la configuration 
 
-### Debian
+### Debian (version testing aka `buster`)
 
  1. Installer le paquet `openvpn`
 
         sudo apt-get update
         sudo apt-get install openvpn
 
+ 2. Installer le paquet `network-manager-openvpn-gnome` pour avoir une interface graphique simplifiant l'utilisation
 
- 2. Décompacter le fichier  fichiers-vpn-etu.zip
+        sudo apt-get install network-manager-openvpn-gnome
 
-        unzip fichiers-vpn-etu.zip
+ 3. Importer le fichier de configuration [`LILLE1-ETU.ovpn`](LILLE1-ETU.ovpn):
 
- 3. Copier les fichiers de configuration dans le répertoire `/etc/openvpn`
-
-        su root
-        cp openvpn_etu.ovpn Terena-chaine_autorites.pem /etc/openvpn
+    > Paramètres → Réseau → Connexions réseau → Onglet VPN → Importez la configuration 
 
 ## Windows
 
@@ -63,7 +59,7 @@ Quelque soit le système d'exploitation utilisé, les fichiers de configuration 
     3. Le parefeu Windows demande su quel type de réseau (privé/public) activer le périphérique: Choisissez privé
  4. Configuration du client VPN :
 
-    1. Désarchiver l'archive des fichiers de configuration (elle contient 2 fichiers : `openvpn_etu.ovpn` et `Terena-chaine_autorites.perm`)
+    1. Désarchiver l'archive des fichiers de configuration (elle contient 3 fichiers : `openvpn_etu.ovpn`, `openvpn_etu.conf` et `Terena-chaine_autorites.perm`)
     2. Placer les fichiers dans le répertoire de configuration `C:\Program Files\OpenVPN\config` (Il s'agit d'un sous-répertoire du répertoire du programme, placé par défaut en `C:\Program Files` ou `C:\Program Files (x86)` selon le contexte).
     3. Faire en sorte que le programme s'exécute en tant qu'administrateur :
 

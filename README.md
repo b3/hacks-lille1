@@ -19,11 +19,12 @@ On trouve ici quelques scripts, modèles et autres documents utiles aux
 
    Script simpliste de démarrage/arrêt d'une connection au VPN de Lille 1.
 
- - [vpnetu](vpnetu)
+ - [vpn](vpn)
 
-   Un peu de documentation sur le VPN à destination des étudiants ainsi qu'un
-   script simpliste (`vpnetu/vpnetu`) de démarrage/arrêt d'une connection au
-   VPN étudiant de Lille 1.
+   Un peu de documentation sur les réseaux privés virtuels (VPN) de
+   l'Université, les fichiers de configurations pour s'y connecter et des
+   scripts simplistes (`vpn/vpnlille1` et `vpn/vpnetu`) de démarrage/arrêt
+   d'une connection à ces réseaux.
 
  - [prez](prez)
 

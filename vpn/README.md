@@ -22,9 +22,6 @@ Par ailleurs à chaque connexion une authentification avec vos identifiants et m
 
 **Les services de l'Université seront également très attentif à ce que votre poste soit parfaitement sécurisé. Système d'exploitation, anti-virus et outils utilisés doivent être à jour.**
 
-## Département informatique de l'IUT «A»
-
-
 
 # Installation du VPN
 

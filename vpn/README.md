@@ -8,7 +8,9 @@ Grâce à ce dispositif l'utilisateur pourra avoir accès depuis chez lui à dif
 
 Les seules contraintes sont de devoir installer et configurer le logiciel permettant d'établir une connexion chiffrée entre son poste et le réseau privé de l'Université. Ce dispositif ne dispense pas d'une authentification si le service interrogé le demande.
 
-Notez qu'il existe d'autres ressources de l'Université (comme [Moodle](http://moodle.univ-lille1.fr)) ou du département (comme le serveur [GitLab](http://git-iut.univ-lille1.fr) par exemple) qui ne demandent pas l'utilisation du VPN.
+Notez qu'il existe d'autres ressources de l'Université (comme [Moodle](http://moodle.univ-lille1.fr)) ou du département (comme le serveur [GitLab](http://git-iut.univ-lille1.fr) par exemple) qui ne demandent pas l'utilisation du VPN. La page d'[accueil des outils](https://accueil.iut-info.univ-lille1.fr) du département liste l'intégralité des services offerts et leur mode d'accès.
+
+Par ailleurs, via le VPN, les machines des salles de TP du département informatique de l'IUT «A» sont accessibles en `ssh` en journée (de 8h à 20h) et la machine **`tp.iut-infobio.priv.univ-lille1.fr`** est accessible en permanence à tous les personnels et étudiants du département.
 
 L'Université offre deux VPN séparés : un pour les **personnels** de l'Université et un autre pour les **étudiants**. Chacun permet d'accéder à des ressources différentes.
 
@@ -22,9 +24,6 @@ Par ailleurs à chaque connexion une authentification avec vos identifiants et m
 
 ## Département informatique de l'IUT «A»
 
-En plus des services génériques de l'Université le département informatique de l'IUT «A» offre l'accès à des services qui lui sont propres via le VPN. La page d'[accueil des outils](https://accueil.iut-info.univ-lille1.fr) du département liste l'intégralité des services offerts et leur mode d'accès.
-
-Par ailleurs, via le VPN, les machines des salles de TP sont accessibles en `ssh` en journée (de 8h à 20h) et la machine **`tp.iut-infobio.priv.univ-lille1.fr`** est accessible en permanence à tous les personnels et étudiants du département.
 
 
 # Installation du VPN

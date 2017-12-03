@@ -130,6 +130,6 @@ Pour démarrer une connexion il suffit alors :
  3. de choisir *Connecter* ;
  4. de saisir votre nom d'utilisateur et mot de passe.
 
-## Utilisationn en ligne de commande
+## Utilisation en ligne de commande
 
-Sous Linux on peut également, après avoir installé `openvpn`, il est possible de juste récupérer le script correspondant à votre statut ([`vpnlille1`](vpnlille1) pour les personnels et [`vpnetu`](vpnetu) pour les étudiants) et l'appeler en ligne de commande avec l'option `start` pour démarrer une connexion et l'option `stop` pour arrêter une connexion.
+Sous Linux on peut également, après avoir installé `openvpn`, se contenter de récupérer le script correspondant à son statut ([`vpnlille1`](vpnlille1) pour les personnels et [`vpnetu`](vpnetu) pour les étudiants) et l'appeler en ligne de commande avec l'option `start` pour démarrer une connexion et l'option `stop` pour arrêter une connexion.

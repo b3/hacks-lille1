@@ -4,13 +4,13 @@
 
 Le VPN, pour *Virtual Private Network* ou *Réseau Privé Virtuel* en français, permet d'avoir accès de façon transparente à des ressources hébergées sur le réseau interne d'un établissement (pour ce qui nous concerne de l'Université de Lille 1 et de son IUT) depuis n'importe quel ordinateur connecté à l'Internet. Il crée un tunnel chiffré entre l'ordinateur de l'utilisateur et le réseau de l'université donnant l'illusion de la connexion physique du poste au réseau de l'établissement.
 
-Grâce à ce dispositif l'utilisateur pourra avoir accès depuis chez lui à différentes ressources informatiques du département (accès à l'environnement de TP, au serveur de bulletins de notes ou au serveur d'assistance par exemple) qui sinon ne seraient accessibles que depuis les salles de TP ou le réseau filaire du campus.
+Grâce à ce dispositif l'utilisateur pourra avoir accès depuis chez lui à différentes ressources informatiques du département informatique de l'IUT «A» (accès à l'environnement de TP, au serveur de bulletins de notes ou au serveur d'assistance par exemple) qui sinon ne seraient accessibles que depuis les salles de TP ou le réseau filaire du campus.
 
-La seule contrainte est de devoir installer et configurer le logiciel permettant d'établir une connexion chiffrée entre son poste et le réseau privé de l'Université. Ce dispositif ne dispense pas d'une authentification si le service interrogé le demande.
+Les seules contraintes sont de devoir installer et configurer le logiciel permettant d'établir une connexion chiffrée entre son poste et le réseau privé de l'Université. Ce dispositif ne dispense pas d'une authentification si le service interrogé le demande.
 
-Notez qu'il existe d'autres ressources de l'Université (comme Moodle) ou du département (comme le serveur [GitLab](http://git-iut.univ-lille1.fr) par exemple) qui ne demandent pas l'utilisation du VPN.
+Notez qu'il existe d'autres ressources de l'Université (comme [Moodle](http://moodle.univ-lille1.fr)) ou du département (comme le serveur [GitLab](http://git-iut.univ-lille1.fr) par exemple) qui ne demandent pas l'utilisation du VPN.
 
-L'Université offre deux VPN séparés : un pour les personnels de l'Université et un autre pour les étudiants. Chacun permet d'accéder à des ressources différentes.
+L'Université offre deux VPN séparés : un pour les **personnels** de l'Université et un autre pour les **étudiants**. Chacun permet d'accéder à des ressources différentes.
 
 ## Condition d'accès
 
@@ -19,6 +19,13 @@ L'accès au VPN n'est permis qu'après s'être authentifié une fois sur le [por
 Par ailleurs à chaque connexion une authentification avec vos identifiants et mots de passe de l'Université (ceux utilisés pour l'accès au portail, Wifi ou email de l'Université) vous sera demandée.
 
 **Les services de l'Université seront également très attentif à ce que votre poste soit parfaitement sécurisé. Système d'exploitation, anti-virus et outils utilisés doivent être à jour.**
+
+## Département informatique de l'IUT «A»
+
+En plus des services génériques de l'Université le département informatique de l'IUT «A» offre l'accès à des services qui lui sont propres via le VPN. La page d'[accueil des outils](https://accueil.iut-info.univ-lille1.fr) du département liste l'intégralité des services offerts et leur mode d'accès.
+
+Par ailleurs, via le VPN, les machines des salles de TP sont accessibles en `ssh` en journée (de 8h à 20h) et la machine **`tp.iut-infobio.priv.univ-lille1.fr`** est accessible en permanence à tous les personnels et étudiants du département.
+
 
 # Installation du VPN
 

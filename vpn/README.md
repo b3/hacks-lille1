@@ -26,9 +26,9 @@ Le VPN utilisé par les services de l'Université est [OpenVPN](https://openvpn.
 
 ## Fichiers de configuration
 
-Quelque soit le système d'exploitation utilisé, les fichiers de configuration sont les mêmes. Ils sont disponibles dans une archive nommée `50937_VPN_ETU_Config_Linuxv2.zip` disponible sur le site du [Centre de Ressources Informatique](http://cri.univ-lille1.fr/Services-proposes/reseau/VPN-etudiant) de l'Université.
+Quelque soit le système d'exploitation utilisé, les fichiers de configuration sont les mêmes. Ils sont disponibles dans une archive disponible sur le site du Centre de Ressources Informatique pour les [personnels](http://cri.univ-lille1.fr/Services-proposes/reseau/vpn) ou les [étudiants](http://cri.univ-lille1.fr/Services-proposes/reseau/VPN-etudiant) de l'Université.
 
-On en trouve ici même une version simplifiée et vérifiée le **1er décembre 2017** :
+On en trouve ici une version simplifiée et vérifiée le **1er décembre 2017** :
 
  * [LILLE1.ovpn](LILLE1.ovpn) pour le réseau des personnels ;
  * [LILLE1-etu.ovpn](LILLE1-etu.ovpn) pour le réseau des étudiants.

@@ -34,7 +34,7 @@ Quelque soit le système d'exploitation utilisé, les fichiers de configuration 
 On en trouve ici une version simplifiée et vérifiée le **1er décembre 2017** :
 
  * [LILLE1.ovpn](LILLE1.ovpn) pour le réseau des personnels ;
- * [LILLE1-etu.ovpn](LILLE1-etu.ovpn) pour le réseau des étudiants.
+ * [LILLE1-ETU.ovpn](LILLE1-ETU.ovpn) pour le réseau des étudiants.
 
 Avvant de commencer il faut récupérer le fichier qui vous concerne.
 

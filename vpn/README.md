@@ -2,9 +2,9 @@
 
 ## Présentation 
 
-Le VPN, pour *Virtual Private Network* ou *Réseau Privé Virtuel* en français, permet d'avoir accès de façon transparente à des ressources hébergées sur le réseau interne d'un établissement (pour ce qui nous concerne de l'Université de Lille 1 et de son IUT) depuis n'importe quel ordinateur connecté à l'Internet. Il crée un tunnel chiffré entre l'ordinateur de l'utilisateur et le réseau de l'université donnant l'illusion de la connexion physique du poste au réseau de l'établissement.
+Le VPN, pour *Virtual Private Network* ou *Réseau Privé Virtuel* en français, permet d'avoir accès de façon transparente à des ressources hébergées sur le réseau interne d'un établissement (pour ce qui nous concerne de l'Université de Lille 1 et de son IUT) depuis n'importe quel ordinateur connecté à l'Internet. Il crée un *tunnel* chiffré entre l'ordinateur de l'utilisateur et le réseau de l'Université, donnant l'illusion de la connexion physique du poste au réseau de l'établissement.
 
-Grâce à ce dispositif l'utilisateur pourra avoir accès depuis chez lui à différentes ressources informatiques du département informatique de l'IUT «A» (accès à l'environnement de TP, au serveur de bulletins de notes ou au serveur d'assistance par exemple) qui sinon ne seraient accessibles que depuis les salles de TP ou le réseau filaire du campus.
+Grâce à ce dispositif l'utilisateur pourra avoir accès, depuis chez lui, à différentes ressources informatiques du département informatique de l'IUT «A» (accès à l'environnement de TP, au serveur de bulletins de notes ou au serveur d'assistance par exemple) qui sinon ne seraient accessibles que depuis les salles de TP ou le réseau filaire du campus.
 
 Les seules contraintes sont de devoir installer et configurer le logiciel permettant d'établir une connexion chiffrée entre son poste et le réseau privé de l'Université. Ce dispositif ne dispense pas d'une authentification si le service interrogé le demande.
 
@@ -16,16 +16,16 @@ L'Université offre deux VPN séparés : un pour les **personnels** de l'Univers
 
 ## Condition d'accès
 
-L'accès au VPN n'est permis qu'après s'être authentifié une fois sur le [portail](http://portail.univ-lille1.fr) de l'établissement. Vous n'aurez donc accès à ce service qu'à l'issue de votre première connexion au portail et après l'avoir activé dans la rubrique <em>Mon compte</em> de celui-ci.
+L'accès au VPN n'est permis qu'après s'être authentifié au moins une fois sur le [portail](http://portail.univ-lille1.fr) de l'établissement. Vous n'aurez donc accès à ce service qu'à l'issue de votre première connexion au portail et après spécifié explicitement l'activation du VPN dans la rubrique <em>Mon compte</em> du portail.
 
-Par ailleurs à chaque connexion une authentification avec vos identifiants et mots de passe de l'Université (ceux utilisés pour l'accès au portail, Wifi ou email de l'Université) vous sera demandée.
+Par ailleurs à chaque connexion une authentification avec votre identifiant et mot de passe de l'Université (ceux utilisés pour l'accès au portail, au Wifi au système d'email de l'Université) vous sera demandée.
 
 **Les services de l'Université seront également très attentif à ce que votre poste soit parfaitement sécurisé. Système d'exploitation, anti-virus et outils utilisés doivent être à jour.**
 
 
 # Installation du VPN
 
-Le VPN utilisé par les services de l'Université est [OpenVPN](https://openvpn.net). Pour chaque système d'exploitation il est donc nécessaire d'installer les logiciels clients permettant de dialoguer avec ce serveur et de paramétrer ces outils avec les fichiers de configuration ad-hocs.
+Le serveur VPN utilisé par les services de l'Université est [OpenVPN](https://openvpn.net). Pour chaque système d'exploitation il est donc nécessaire d'installer les logiciels clients permettant de dialoguer avec ce serveur et de paramétrer ces outils avec les fichiers de configuration ad-hoc.
 
 ## Fichiers de configuration
 
@@ -36,11 +36,11 @@ On en trouve ici une version simplifiée et vérifiée le **1er décembre 2017**
  * [LILLE1.ovpn](LILLE1.ovpn) pour le réseau des personnels ;
  * [LILLE1-ETU.ovpn](LILLE1-ETU.ovpn) pour le réseau des étudiants.
 
-Avvant de commencer il faut récupérer le fichier qui vous concerne.
+Avant de commencer il faut récupérer le fichier qui vous concerne.
 
 ## Installation en mode graphique
 
-Un guide d'installation simplifié est donné ici pour différents systèmes d'exploitations.
+Un guide d'installation simplifié est donné ici pour différents systèmes d'exploitation.
 
 ### Ubuntu GNU/Linux (17.10)
 
@@ -61,11 +61,11 @@ Cette procédure a été testée et validée avec Ubuntu version 17.10 le 1er d�
 
  4. Saisir votre identifiant dans le champ *Nom d'utilisateur*
 
-Pour démarrer une connexion il suffit alors de choisir *Se connecter* dans le sous-menu *VPN désactivé* du menu principal (cliquer en haut à gauche de l'écran) et de saisir votre mot de passe.
+Pour démarrer une connexion il suffit alors de choisir *Se connecter* dans le sous-menu *VPN désactivé* du menu principal (cliquer en haut à droite de l'écran) et de saisir votre mot de passe.
 
 ### Debian GNU/Linux (stretch, 9.x)
 
-Cette procédure a été testée et validée avec Debian version stretch le 1er décembre 2017.
+Cette procédure a été testée et validée avec Debian version `stretch` le 1er décembre 2017.
 
  1. Installer le paquet `openvpn`
 
@@ -88,7 +88,7 @@ Cette procédure a été testée et validée avec Debian version stretch le 1er 
 
  4. Saisir votre identifiant dans le champ *Nom d'utilisateur*
 
-Pour démarrer une connexion il suffit alors de choisir *Se connecter* dans le sous-menu *VPN désactivé* du menu principal (cliquer en haut à gauche de l'écran) et de saisir votre mot de passe.
+Pour démarrer une connexion il suffit alors de choisir *Se connecter* dans le sous-menu *VPN désactivé* du menu principal (cliquer en haut à droite de l'écran) et de saisir votre mot de passe.
 
 ### Mac OS X (High Sierra, 10.13.1)
 
@@ -103,7 +103,7 @@ Cette procédure a été testée et validée avec Mac OS X High Sierra le 1er d�
 Pour démarrer une connexion il suffit alors de :
 
  1. démarrer TunnelBlick (si ça n'est pas déjà fait) ;
- 2. de choisir le réseau de son choix dans le menu de l'application dans la barre de ;
+ 2. de choisir le réseau de son choix dans le menu de l'application dans la barre de menu ;
  3. de saisir votre nom d'utilisateur et mot de passe.
 
 ### Windows (10 pro)
@@ -120,7 +120,7 @@ Cette procédure a été testée et validée avec Windows 10 Professionnel le 1e
  3. Configurer le client VPN
 
     1. Démarrer le programme *OpenVPN GUI* ;
-    2. Cliquer droit sur l'icône de *OpenVPN GUI* dans la barre de tâches puis choisissez *Import file...* pour importer le fichier de configuration correspondant à votre statut ([`LILLE1.ovpn`](LILLE1.ovpn) ou [`LILLE1-ETU.ovpn`](LILLE1-ETU.ovpn)) :
+    2. Cliquer droit sur l'icône de *OpenVPN GUI* dans la barre de tâches (en bas à droite de votre écran) puis choisissez *Import file...* pour importer le fichier de configuration correspondant à votre statut ([`LILLE1.ovpn`](LILLE1.ovpn) ou [`LILLE1-ETU.ovpn`](LILLE1-ETU.ovpn)).
 
 
 Pour démarrer une connexion il suffit alors :

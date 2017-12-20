@@ -16,11 +16,13 @@ L'Université offre deux VPN séparés : un pour les **personnels** de l'Univers
 
 ## Condition d'accès
 
-L'accès au VPN n'est permis qu'après s'être authentifié au moins une fois sur le [portail](http://portail.univ-lille1.fr) de l'établissement. Vous n'aurez donc accès à ce service qu'à l'issue de votre première connexion au portail et après spécifié explicitement l'activation du VPN dans la rubrique <em>Mon compte</em> du portail.
+L'accès au VPN n'est permis qu'après s'être authentifié au moins une fois sur le [portail](http://portail.univ-lille1.fr) de l'établissement. Vous n'aurez donc accès à ce service qu'à l'issue de votre première connexion au portail et après avoir spécifié explicitement l'activation du VPN dans la rubrique <em>Mon compte</em> du portail.
 
-Par ailleurs à chaque connexion une authentification avec votre identifiant et mot de passe de l'Université (ceux utilisés pour l'accès au portail, au Wifi au système d'email de l'Université) vous sera demandée.
+Par ailleurs à chaque connexion une authentification avec votre identifiant et mot de passe de l'Université (ceux utilisés pour l'accès au portail, au Wi-Fi ou au système d'email de l'Université) vous sera demandée.
 
 **Les services de l'Université seront également très attentif à ce que votre poste soit parfaitement sécurisé. Système d'exploitation, anti-virus et outils utilisés doivent être à jour.**
+
+Certains fournisseurs d'accès limitent (ou détournent) largement l'accès au service [DNS](https://fr.wikipedia.org/wiki/Domain_Name_System) qui permet d'obtenir l'adresse d'un serveur à partir de son nom. Ces limitations peuvent empêcher l'accès aux ressources normalement accessibles via les VPNs de l'Université. Un contournement qui peut fonctionner dans certain de ces cas est d'utiliser un serveur DNS public sérieux, comme par exemple celui offert par [Quad9](https://www.quad9.net) à l'adresse `9.9.9.9`.
 
 
 # Installation du VPN

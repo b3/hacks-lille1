@@ -6,6 +6,7 @@
 # COMMANDE
 #      start             démarre une connection au VPN personnels de Lille 1
 #      stop              stoppe la connection au VPN personnels de Lille 1
+#      restart           stop puis start
 #      conf              génère un fichier LILLE1.ovpn
 #      -h, --help, help  affiche ce message d'aide
 
@@ -131,18 +132,34 @@ EOF
 # doc is included as comments from 2nd line of the script to first empty line
 doc () { sed -n '2,/^$/ { s/^ *#// ; s/^ //g ; t e ; d ; :e p }' <$0 ; }
 
+# démarrer le vpn
+start_vpn ()
+{
+    verifie sudo
+    verifie openvpn
+    sudo openvpn --daemon \
+         --config ${vpnconf}
+}
+
+# arrêter le vpn
+stop_vpn ()
+{
+    verifie pgrep
+    pid=$(pgrep openvpn)
+    test -z "$pid" || sudo kill $pid
+}
+
 # Le travail effectif
 case "$1" in
     "start")
-        verifie sudo
-        verifie openvpn
-        sudo openvpn --daemon \
-                     --config ${vpnconf}
+        start_vpn
         ;;
     "stop")
-        verifie pgrep
-        pid=$(pgrep openvpn)
-        test -z "$pid" || sudo kill $pid
+        stop_vpn
+        ;;
+    "restart")
+        stop_vpn
+        start_vpn
         ;;
     "conf")
         cp ${vpnconf} .
